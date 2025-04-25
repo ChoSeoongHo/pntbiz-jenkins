@@ -73,3 +73,5 @@ def createApiJob(Map config) {
         }
     }
 }
+
+return this
