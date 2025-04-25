@@ -32,8 +32,8 @@ return { Map config ->
 
                 builders << 'hudson.tasks.Shell' {
                     command("""
-                    SERVER_NAME=dev-04
-                    SERVER_INSTANCE_NO=19827979
+                    SERVER_NAME=${serverName}
+                    SERVER_INSTANCE_NO=${instanceNo}
                     
                     echo "========== Server Status Check: \${SERVER_NAME} =========="
                     serverStatusCheck=\$(ncloud vserver getServerInstanceList | grep "\${SERVER_NAME}" -A 15 | grep RUN)
