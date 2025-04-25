@@ -27,14 +27,35 @@ return { Map config ->
         jdk('JDK8')
 
         steps {
-            maven {
-                goals("clean install -Dmaven.test.skip=\${SKIP_TEST} -Denvironment=\${ENV} -Dsite=\${SITE}")
-                rootPOM('./pntbiz-api/pom.xml')
-                mavenInstallation('maven-3.5.3')
-            }
-
             configure { project ->
                 def builders = project / 'builders'
+
+                builders << 'hudson.tasks.Shell' {
+                    command("""
+                    SERVER_NAME=dev-04
+                    SERVER_INSTANCE_NO=19827979
+                    
+                    echo "========== Server Status Check: \${SERVER_NAME} =========="
+                    serverStatusCheck=\$(ncloud vserver getServerInstanceList | grep "\${SERVER_NAME}" -A 15 | grep RUN)
+                    if [ -z "\$serverStatusCheck" ]; then
+                      echo "> Server is not running. Starting the server..."
+                      ncloud vserver startServerInstances --serverInstanceNoList \${SERVER_INSTANCE_NO}
+                      echo "> Waiting for the server to be fully up..."
+                      sleep 120
+                    else
+                      echo "> Server is already running."
+                    fi
+                    echo "========== Server Status Check Done =========="
+                    """.stripIndent())
+                }
+
+                builders << 'hudson.tasks.Maven' {
+                    targets("clean install -Dmaven.test.skip=\${SKIP_TEST} -Denvironment=\${ENV} -Dsite=\${SITE}")
+                    mavenName('maven-3.5.3')
+                    usePrivateRepository(false)
+                    rootPOM('./pntbiz-api/pom.xml')
+                }
+
                 builders << 'org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder' {
                     playbook(config.playbook)
                     ansibleName('ANSIBLE_HOME')
@@ -52,15 +73,17 @@ return { Map config ->
                         }
                     }
                 }
-            }
 
-            shell("""
-                echo "----------- remove build file -----------"
+                builders << 'hudson.tasks.Shell' {
+                    command("""
+                echo "----------- Clean-Up Workspace -----------"
                 sleep 3
                 rm -rf ${config.cleanup.workspace}/*
                 rm -rf ${config.cleanup.workspace}/.git
                 rm -rf ${config.cleanup.deployTarget}/*
-            """.stripIndent())
+                """.stripIndent())
+                }
+            }
         }
 
         publishers {

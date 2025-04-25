@@ -22,6 +22,8 @@ serverMatrix.each { serverKey, modulesForServer ->
         createApiJob.delegate = this
         createApiJob.resolveStrategy = Closure.DELEGATE_FIRST
         createApiJob([
+                serverName : serverKey,
+                instanceNo : server.instanceNo,
                 jobName    : jobName,
                 description: desc,
                 playbook   : server.playbook,
