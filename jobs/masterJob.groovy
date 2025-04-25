@@ -2,7 +2,7 @@ def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
 
-def apiTemplate = evaluate(readFileFromWorkspace('jobs/templates/api.groovy'))
+def createApiJob = evaluate(readFileFromWorkspace('jobs/templates/api.groovy'))
 
 println("[INFO] Start generating deploy jobs...")
 serverMatrix.each { serverKey, modulesForServer ->
@@ -19,7 +19,7 @@ serverMatrix.each { serverKey, modulesForServer ->
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
 
         println "[INFO] Creating job '${jobName}' for module '${moduleName}' on server '${serverKey}'..."
-        apiTemplate.createApiJob([
+        createApiJob([
                 jobName    : jobName,
                 description: desc,
                 playbook   : server.playbook,
