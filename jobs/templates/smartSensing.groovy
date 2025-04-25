@@ -1,14 +1,14 @@
-package jobs.templates
-
-def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
-
 return { Map baseConfig ->
+    def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
+    gradleJobTemplate.delegate = this
+    gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+
     return gradleJobTemplate(baseConfig + [
             repoUrl        : 'git@github.com:pntbiz1/indoorplus-smart-sensing-core-api.git',
             credentialsId  : 'indoorplus-smart-sensing-core-api',
             parameters    : [
                     [ type: 'string', name: 'ENV', defaultValue: 'develop', description: '' ],
-                    [ type: 'string', name: 'SITE', choices: 'common', description: '' ]
+                    [ type: 'string', name: 'SITE', defaultValue: 'common', description: '' ]
             ],
             gradleTasks    : 'clean build -x test -Pprofile=${ENV} -Psite=${SITE}',
             gradleName     : 'gradle-8.10.2',
