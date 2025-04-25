@@ -32,7 +32,7 @@ return { Map config ->
 
                 builders << 'hudson.tasks.Shell' {
                     command("""
-                    SERVER_NAME=$config.serverName}
+                    SERVER_NAME=${config.serverName}
                     SERVER_INSTANCE_NO=${config.instanceNo}
                     
                     echo "========== Server Status Check: \${SERVER_NAME} =========="
