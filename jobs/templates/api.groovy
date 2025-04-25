@@ -29,7 +29,7 @@ return { Map config ->
         steps {
             maven {
                 goals("clean install -Dmaven.test.skip=\${SKIP_TEST} -Denvironment=\${ENV} -Dsite=\${SITE}")
-                pom('./pntbiz-api/pom.xml')
+                rootPOM('./pntbiz-api/pom.xml')
                 mavenInstallation('maven-3.5.3')
             }
 
