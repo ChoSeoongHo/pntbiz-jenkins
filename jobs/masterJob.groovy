@@ -19,6 +19,8 @@ serverMatrix.each { serverKey, modulesForServer ->
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
 
         println "[INFO] Creating job '${jobName}' for module '${moduleName}' on server '${serverKey}'..."
+        createApiJob.delegate = this
+        createApiJob.resolveStrategy = Closure.DELEGATE_FIRST
         createApiJob([
                 jobName    : jobName,
                 description: desc,
