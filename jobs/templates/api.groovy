@@ -1,4 +1,4 @@
-def createApiJob(Map config) {
+return { Map config ->
     job(config.jobName) {
         description(config.description)
 
@@ -73,5 +73,3 @@ def createApiJob(Map config) {
         }
     }
 }
-
-return this
