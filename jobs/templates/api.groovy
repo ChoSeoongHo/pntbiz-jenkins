@@ -4,8 +4,8 @@ return { Map config ->
 
         parameters {
             stringParam('BRANCH', config.defaultBranch ?: 'product', '브랜치 : [브랜치명]\n태그 :  refs/tags/[태그번호]')
-            stringParam('ENV', config.env ?: 'develop', 'resources-[ENV/[SITE]')
-            stringParam('SITE', config.site ?: 'common', 'resources-[ENV/[SITE]')
+            stringParam('ENV', config.env ?: 'develop', 'resources-[ENV]/[SITE]')
+            stringParam('SITE', config.site ?: 'common', 'resources-[ENV]/[SITE]')
             booleanParam('SKIP_TEST', false, '단위 테스트 생략 여부')
         }
 
