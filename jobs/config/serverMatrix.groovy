@@ -1,3 +1,3 @@
 return [
-        'dev-10': ['api']
+        'dev-10': ['api', 'wms', 'admin']
 ]

@@ -1,3 +1,5 @@
+package jobs.templates
+
 return { Map config ->
     job(config.jobName) {
         description(config.description)
@@ -6,7 +8,6 @@ return { Map config ->
             stringParam('BRANCH', config.defaultBranch ?: 'product', '브랜치 : [브랜치명]\n태그 :  refs/tags/[태그번호]')
             stringParam('ENV', config.env ?: 'develop', 'resources-[ENV]/[SITE]')
             stringParam('SITE', config.site ?: 'common', 'resources-[ENV]/[SITE]')
-            booleanParam('SKIP_TEST', false, '단위 테스트 생략 여부')
         }
 
         logRotator {
@@ -17,8 +18,8 @@ return { Map config ->
         scm {
             git {
                 remote {
-                    url('git@github.com:pntbiz1/pntbiz-indoorplus-api.git')
-                    credentials('ssh-pntbiz-indoorplus-api')
+                    url('git@github.com:pntbiz1/pntbiz-indoorplus-wms.git')
+                    credentials('ssh-pntbiz-indoorplus-wms')
                 }
                 branch('${BRANCH}')
             }
@@ -50,8 +51,8 @@ return { Map config ->
                 }
 
                 builders << 'hudson.tasks.Maven' {
-                    targets("clean install -Dmaven.test.skip=\${SKIP_TEST} -Denvironment=\${ENV} -Dsite=\${SITE}")
-                    rootPOM('./pntbiz-api/pom.xml')
+                    targets("clean install -Dmaven.test.skip=true -Denvironment=\${ENV} -Dsite=\${SITE}")
+                    rootPOM('./pntbiz-wms/pom.xml')
                     mavenName('maven-3.5.3')
                     usePrivateRepository(false)
                 }
