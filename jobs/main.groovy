@@ -1,16 +1,18 @@
 def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
-def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
+def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
 
 def jobGenerators = [
-        api   : evaluate(readFileFromWorkspace('jobs/templates/api.groovy')),
-        wms   : evaluate(readFileFromWorkspace('jobs/templates/wms.groovy')),
-        admin : evaluate(readFileFromWorkspace('jobs/templates/admin.groovy')),
-        rtls  : evaluate(readFileFromWorkspace('jobs/templates/rtls.groovy')),
-        socket: evaluate(readFileFromWorkspace('jobs/templates/socket.groovy')),
-        oauth : evaluate(readFileFromWorkspace('jobs/templates/oauth.groovy'))(gradleJobTemplate),
-        efm   : evaluate(readFileFromWorkspace('jobs/templates/efm.groovy'))(gradleJobTemplate)
+        api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy')),
+        wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy')),
+        admin                : evaluate(readFileFromWorkspace('jobs/templates/maven/admin.groovy')),
+        rtls                 : evaluate(readFileFromWorkspace('jobs/templates/nodejs/rtls.groovy')),
+        socket               : evaluate(readFileFromWorkspace('jobs/templates/nodejs/socket.groovy')),
+        oauth                : evaluate(readFileFromWorkspace('jobs/templates/gradle/oauth.groovy'))(gradleJobTemplate),
+        smart_sensing_core   : evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingCore.groovy'))(gradleJobTemplate),
+        smart_sensing_service: evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingService.groovy'))(gradleJobTemplate),
+        efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleJobTemplate)
 ]
 
 println("[INFO] Start generating deploy jobs...")

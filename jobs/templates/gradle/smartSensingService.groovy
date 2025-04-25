@@ -1,5 +1,3 @@
-package jobs.templates
-
 return { gradleJobTemplate ->
     return { Map baseConfig ->
         gradleJobTemplate.delegate = delegate
