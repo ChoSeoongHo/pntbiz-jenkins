@@ -1,8 +1,6 @@
-def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
-
-return { Map baseConfig ->
-    return {
-        gradleJobTemplate.delegate = this
+return { gradleJobTemplate ->
+    return { Map baseConfig ->
+        gradleJobTemplate.delegate = delegate
         gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
 
         return gradleJobTemplate(baseConfig + [

@@ -1,6 +1,7 @@
 def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
+def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
 
 def jobGenerators = [
         api   : evaluate(readFileFromWorkspace('jobs/templates/api.groovy')),
@@ -8,7 +9,7 @@ def jobGenerators = [
         admin : evaluate(readFileFromWorkspace('jobs/templates/admin.groovy')),
         rtls  : evaluate(readFileFromWorkspace('jobs/templates/rtls.groovy')),
         socket: evaluate(readFileFromWorkspace('jobs/templates/socket.groovy')),
-        efm   : evaluate(readFileFromWorkspace('jobs/templates/efm.groovy'))
+        efm   : evaluate(readFileFromWorkspace('jobs/templates/efm.groovy'))(gradleJobTemplate)
 ]
 
 println("[INFO] Start generating deploy jobs...")
