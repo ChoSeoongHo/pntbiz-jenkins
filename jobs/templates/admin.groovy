@@ -52,7 +52,7 @@ return { Map config ->
 
                 builders << 'hudson.tasks.Maven' {
                     targets("clean install -Dmaven.test.skip=true -Denvironment=\${ENV} -Dsite=\${SITE}")
-                    rootPOM('./pntbiz-admin2/pom.xml')
+                    pom('./pntbiz-admin2/pom.xml')
                     mavenName('maven-3.5.3')
                     usePrivateRepository(false)
                 }
