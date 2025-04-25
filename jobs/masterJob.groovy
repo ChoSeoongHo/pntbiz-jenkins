@@ -1,8 +1,8 @@
-def modules = evaluate(readFileFromWorkspace('dsl/config/modules.groovy'))
-def servers = evaluate(readFileFromWorkspace('dsl/config/servers.groovy'))
-def serverMatrix = evaluate(readFileFromWorkspace('dsl/config/serverMatrix.groovy'))
+def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
+def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
+def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
 
-def apiTemplate = evaluate(readFileFromWorkSpace('dsl/templates/api.groovy'))
+def apiTemplate = evaluate(readFileFromWorkSpace('jobs/templates/api.groovy'))
 
 println("[INFO] Start generating deploy jobs...")
 serverMatrix.each { serverKey, modulesForServer ->
