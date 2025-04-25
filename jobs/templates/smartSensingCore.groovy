@@ -13,6 +13,7 @@ return { gradleJobTemplate ->
                 gradleTasks    : 'clean build -x test -Pprofile=${ENV} -Psite=${SITE}',
                 gradleName     : 'gradle-8.10.2',
                 jdk            : 'JDK17',
+                buildFile: 'core-api/build.gradle',
                 packagingScript: """
             DEPLOY_FILE_NAME='api.jar'
             DEPLOY_DIR_NAME='pntbiz_core_api'

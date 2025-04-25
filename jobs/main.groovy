@@ -9,6 +9,7 @@ def jobGenerators = [
         admin : evaluate(readFileFromWorkspace('jobs/templates/admin.groovy')),
         rtls  : evaluate(readFileFromWorkspace('jobs/templates/rtls.groovy')),
         socket: evaluate(readFileFromWorkspace('jobs/templates/socket.groovy')),
+        oauth : evaluate(readFileFromWorkspace('jobs/templates/oauth.groovy'))(gradleJobTemplate),
         efm   : evaluate(readFileFromWorkspace('jobs/templates/efm.groovy'))(gradleJobTemplate)
 ]
 
@@ -52,7 +53,7 @@ serverMatrix.each { serverKey, modulesForServer ->
                         archive_temp  : "/data/${jobName}/temp/",
                         sh_command    : "/data/naver/shell/deploy_${moduleName}.sh"
                 ],
-                cleanup: [
+                cleanup    : [
                         workspace   : "/var/lib/jenkins/workspace/${jobName}",
                         deployTarget: "/data/${jobName}"
                 ]

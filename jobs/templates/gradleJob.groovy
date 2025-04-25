@@ -71,6 +71,9 @@ return { Map config ->
                     tasks(config.gradleTasks ?: 'clean build -x test')
                     gradleName(config.gradleName ?: 'gradle-8.10.2')
                     useWrapper(false)
+                    if (config.buildFile) {
+                        buildFile(config.buildFile)
+                    }
                 }
 
                 // STEP 3: 아티팩트 생성 및 압축
