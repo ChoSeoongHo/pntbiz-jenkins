@@ -2,7 +2,7 @@ def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
 
-def apiTemplate = evaluate(readFileFromWorkSpace('jobs/templates/api.groovy'))
+def apiTemplate = evaluate(readFileFromWorkspace('jobs/templates/api.groovy'))
 
 println("[INFO] Start generating deploy jobs...")
 serverMatrix.each { serverKey, modulesForServer ->
