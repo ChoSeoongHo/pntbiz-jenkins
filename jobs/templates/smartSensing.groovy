@@ -1,19 +1,21 @@
-return { Map baseConfig ->
-    def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
-    gradleJobTemplate.delegate = this
-    gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
 
-    return gradleJobTemplate(baseConfig + [
-            repoUrl        : 'git@github.com:pntbiz1/indoorplus-smart-sensing-core-api.git',
-            credentialsId  : 'indoorplus-smart-sensing-core-api',
-            parameters    : [
-                    [ type: 'string', name: 'ENV', defaultValue: 'develop', description: '' ],
-                    [ type: 'string', name: 'SITE', defaultValue: 'common', description: '' ]
-            ],
-            gradleTasks    : 'clean build -x test -Pprofile=${ENV} -Psite=${SITE}',
-            gradleName     : 'gradle-8.10.2',
-            jdk            : 'JDK17',
-            packagingScript: """
+return { Map baseConfig ->
+    return {
+        gradleJobTemplate.delegate = this
+        gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+
+        return gradleJobTemplate(baseConfig + [
+                repoUrl        : 'git@github.com:pntbiz1/indoorplus-smart-sensing-core-api.git',
+                credentialsId  : 'indoorplus-smart-sensing-core-api',
+                parameters     : [
+                        [type: 'string', name: 'ENV', defaultValue: 'develop', description: ''],
+                        [type: 'string', name: 'SITE', defaultValue: 'common', description: '']
+                ],
+                gradleTasks    : 'clean build -x test -Pprofile=${ENV} -Psite=${SITE}',
+                gradleName     : 'gradle-8.10.2',
+                jdk            : 'JDK17',
+                packagingScript: """
             DEPLOY_FILE_NAME='api.jar'
             DEPLOY_DIR_NAME='pntbiz_core_api'
             
@@ -36,5 +38,6 @@ return { Map baseConfig ->
             cd \${DEPLOY_DIR_NAME}
             zip -r \${DEPLOY_DIR_NAME} *
         """.stripIndent()
-    ])
+        ])
+    }
 }

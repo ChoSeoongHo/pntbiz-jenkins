@@ -1,15 +1,17 @@
-return { Map baseConfig ->
-    def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
-    gradleJobTemplate.delegate = this
-    gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
 
-    gradleJobTemplate(baseConfig + [
-            repoUrl        : 'git@github.com:pntbiz1/pntbiz-raas-efm.git',
-            credentialsId  : 'ssh-pntbiz-raas-efm',
-            gradleTasks    : 'clean build -x test',
-            gradleName     : 'gradle-8.10.2',
-            jdk            : 'JDK17',
-            packagingScript: """
+return { Map baseConfig ->
+    return {
+        gradleJobTemplate.delegate = this
+        gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+
+        gradleJobTemplate(baseConfig + [
+                repoUrl        : 'git@github.com:pntbiz1/pntbiz-raas-efm.git',
+                credentialsId  : 'ssh-pntbiz-raas-efm',
+                gradleTasks    : 'clean build -x test',
+                gradleName     : 'gradle-8.10.2',
+                jdk            : 'JDK17',
+                packagingScript: """
             ZIP_NAME='efm.zip'
             DEPLOY_FILE_NAME='pntbiz-raas-efm.jar'
             DEPLOY_DIR_NAME='efm'
@@ -22,5 +24,6 @@ return { Map baseConfig ->
             cd \${DEPLOY_DIR_NAME}
             zip -r \${DEPLOY_DIR_NAME} *
         """.stripIndent()
-    ])
+        ])
+    }
 }
