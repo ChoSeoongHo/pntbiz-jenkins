@@ -13,7 +13,7 @@ job('seed-job') {
 
     steps {
         dsl {
-            external('jobs/test.groovy')
+            external('jobs/masterJob.groovy')
             removeAction('DELETE')
         }
     }
