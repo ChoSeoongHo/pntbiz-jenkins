@@ -1,7 +1,10 @@
 def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradleJob.groovy'))
 
 return { Map baseConfig ->
-    return gradleJobTemplate(baseConfig + [
+    gradleJobTemplate.delegate = this
+    gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+
+    gradleJobTemplate(baseConfig + [
             repoUrl        : 'git@github.com:pntbiz1/pntbiz-raas-efm.git',
             credentialsId  : 'ssh-pntbiz-raas-efm',
             gradleTasks    : 'clean build -x test',
