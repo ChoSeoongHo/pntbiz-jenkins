@@ -1,11 +1,11 @@
 package templates.gradle
 
-return { gradleJobTemplate ->
+return { gradleTemplate ->
     return { Map baseConfig ->
-        gradleJobTemplate.delegate = delegate
-        gradleJobTemplate.resolveStrategy = DELEGATE_FIRST
+        gradleTemplate.delegate = delegate
+        gradleTemplate.resolveStrategy = DELEGATE_FIRST
 
-        return gradleJobTemplate(baseConfig + [
+        return gradleTemplate(baseConfig + [
                 repoUrl        : 'git@github.com:pntbiz1/indoorplus-smart-sensing-core-api.git',
                 credentialsId  : 'indoorplus-smart-sensing-core-api',
                 parameters     : [
