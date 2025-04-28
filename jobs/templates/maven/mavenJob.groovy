@@ -1,3 +1,5 @@
+package templates.maven
+
 return { Map config ->
     job(config.jobName) {
         description(config.description)

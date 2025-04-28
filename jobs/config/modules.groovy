@@ -1,3 +1,8 @@
+package config
+
+/**
+ * 모듈 정보
+ */
 return [
         api                  : 'pntbiz-api',
         wms                  : 'pntbiz-wms',

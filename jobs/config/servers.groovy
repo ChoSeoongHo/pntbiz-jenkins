@@ -1,3 +1,18 @@
+package config
+
+/**
+ * 서버 구성(configuration) 정보
+ * <ul>
+ * <li>description: 서버에 대한 간략 설명</li>
+ * <li>instanceNo: 서버 인스턴스 번호</li>
+ * <li>ip: 서버의 공인 IP 주소</li>
+ * <li>playbook: 해당 서버를 관리하는 Ansible Playbook 경로</li>
+ * <li>inventory: Ansible Inventory 파일 경로</li>
+ * <li>suffix: 서버 식별용 접미사</li>
+ * </ul>
+ *
+ * @return 서버별 설정 정보를 담은 Map 객체
+ */
 return [
         'dev-01'           : [description: "Server-01", instanceNo: '19762496', ip: '110.165.16.192', playbook: '/etc/ansible/server-01/playbook.yml', inventory: '/etc/ansible/server-01/hosts-server-01', suffix: 'server-01'],
         'dev-02'           : [description: "Server-02", instanceNo: '19827960', ip: '223.130.137.110', playbook: '/etc/ansible/server-02/playbook.yml', inventory: '/etc/ansible/server-02/hosts-server-02', suffix: 'server-02'],

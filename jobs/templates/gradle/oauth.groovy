@@ -1,7 +1,9 @@
+package templates.gradle
+
 return { gradleJobTemplate ->
     return { Map baseConfig ->
         gradleJobTemplate.delegate = delegate
-        gradleJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+        gradleJobTemplate.resolveStrategy = DELEGATE_FIRST
 
         gradleJobTemplate(baseConfig + [
                 repoUrl        : 'git@github.com:pntbiz1/pntbiz-indoorplus-oauth.git',

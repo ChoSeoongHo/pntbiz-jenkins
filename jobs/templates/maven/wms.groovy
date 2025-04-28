@@ -1,7 +1,9 @@
+package templates.maven
+
 return { mavenJobTemplate ->
     return { Map baseConfig ->
         mavenJobTemplate.delegate = delegate
-        mavenJobTemplate.resolveStrategy = Closure.DELEGATE_FIRST
+        mavenJobTemplate.resolveStrategy = DELEGATE_FIRST
 
         mavenJobTemplate(baseConfig + [
                 repoUrl          : 'git@github.com:pntbiz1/pntbiz-indoorplus-wms.git',

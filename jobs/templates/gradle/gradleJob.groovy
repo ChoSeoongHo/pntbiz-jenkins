@@ -1,3 +1,5 @@
+package templates.gradle
+
 return { Map config ->
     job(config.jobName) {
         description(config.description)
