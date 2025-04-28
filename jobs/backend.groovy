@@ -1,13 +1,14 @@
 def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
+def mavenJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
 def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
-def instanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
 
+def instanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
 def jobGenerators = [
-        api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy')),
-        wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy')),
-        admin                : evaluate(readFileFromWorkspace('jobs/templates/maven/admin.groovy')),
+        api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenJobTemplate),
+        wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy'))(mavenJobTemplate),
+        admin                : evaluate(readFileFromWorkspace('jobs/templates/maven/admin.groovy'))(mavenJobTemplate),
         rtls                 : evaluate(readFileFromWorkspace('jobs/templates/nodejs/rtls.groovy')),
         socket               : evaluate(readFileFromWorkspace('jobs/templates/nodejs/socket.groovy')),
         oauth                : evaluate(readFileFromWorkspace('jobs/templates/gradle/oauth.groovy'))(gradleJobTemplate),
