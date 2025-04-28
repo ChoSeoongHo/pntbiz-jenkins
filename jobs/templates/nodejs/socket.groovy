@@ -1,5 +1,3 @@
-package jobs.templates.nodejs
-
 return { Map config ->
     job(config.jobName) {
         description(config.description)
