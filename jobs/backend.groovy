@@ -1,39 +1,45 @@
 def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
-def mavenJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
-def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
+def mavenTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
+def gradleTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
 
 def instanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
 def jobGenerators = [
-        api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenJobTemplate),
-        wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy'))(mavenJobTemplate),
-        admin                : evaluate(readFileFromWorkspace('jobs/templates/maven/admin.groovy'))(mavenJobTemplate),
+        api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenTemplate),
+        wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy'))(mavenTemplate),
+        admin                : evaluate(readFileFromWorkspace('jobs/templates/maven/admin.groovy'))(mavenTemplate),
         rtls                 : evaluate(readFileFromWorkspace('jobs/templates/nodejs/rtls.groovy')),
         socket               : evaluate(readFileFromWorkspace('jobs/templates/nodejs/socket.groovy')),
-        oauth                : evaluate(readFileFromWorkspace('jobs/templates/gradle/oauth.groovy'))(gradleJobTemplate),
-        smart_sensing_core   : evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingCore.groovy'))(gradleJobTemplate),
-        smart_sensing_service: evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingService.groovy'))(gradleJobTemplate),
-        efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleJobTemplate)
+        oauth                : evaluate(readFileFromWorkspace('jobs/templates/gradle/oauth.groovy'))(gradleTemplate),
+        smart_sensing_core   : evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingCore.groovy'))(gradleTemplate),
+        smart_sensing_service: evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingService.groovy'))(gradleTemplate),
+        efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleTemplate)
 ]
 
 println("[INFO] Start generating instance-management jobs...")
+def totalInstanceJobs = 0
 instanceManageJobGenerator.delegate = this
 instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
 servers.each { serverKey, serverInfo ->
     def server = servers[serverKey]
     ['start', 'stop'].each { action ->
         def jobName = "${action}-${serverKey}"
+        println("[INFO] Start syncing instance job '${jobName}'...")
         instanceManageJobGenerator(
                 jobName: jobName,
                 description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
                 instanceNo: server.instanceNo,
                 action: action
         )
+        println("[INFO] Instance job '${jobName}' synced successfully.")
+        totalInstanceJobs++
     }
 }
+println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
 
 println("[INFO] Start generating deploy jobs...")
+def totalDeployJobs = 0
 serverMatrix.each { serverKey, modulesForServer ->
     def server = servers[serverKey]
     println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
@@ -55,10 +61,10 @@ serverMatrix.each { serverKey, modulesForServer ->
         def jobName = "${server.suffix}-${moduleName}"
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
 
-        println "[INFO] Creating job '${jobName}' for module '${moduleName}' on server '${serverKey}'..."
+        println "[INFO] Start syncing deploy job '${jobName}'..."
 
         jobGenerator.delegate = this
-        jobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
+        jobGenerator.resolveStrategy = DELEGATE_FIRST
         jobGenerator([
                 serverKey  : serverKey,
                 instanceNo : server.instanceNo,
@@ -80,6 +86,11 @@ serverMatrix.each { serverKey, modulesForServer ->
                 ]
         ])
 
-        println "[SUCCESS] Job '${jobName}' created successfully."
+        println "[INFO] Deploy job '${jobName}' synced successfully."
+        totalDeployJobs++
     }
 }
+println "[INFO] Deploy jobs sync completed. Total: ${totalDeployJobs} jobs."
+
+def totalJobs = totalInstanceJobs + totalDeployJobs
+println "[INFO] Job sync process finished. Total jobs synced: ${totalJobs}"
