@@ -26,7 +26,7 @@ servers.each { serverKey, serverInfo ->
         def jobName = "${action}-${serverKey}"
         instanceManageJobGenerator(
                 jobName: jobName,
-                description: "Server ${action.capitalize()} Job for ${server.description} (${server.ip})",
+                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
                 instanceNo: server.instanceNo,
                 action: action
         )
