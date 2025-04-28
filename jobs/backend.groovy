@@ -17,13 +17,11 @@ def jobGenerators = [
         efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleJobTemplate)
 ]
 
-println("[INFO] Start generating jenkins jobs...")
+println("[INFO] Start generating instance-management jobs...")
 instanceManageJobGenerator.delegate = this
 instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
-serverMatrix.each { serverKey, modulesForServer ->
+servers.each { serverKey, serverInfo ->
     def server = servers[serverKey]
-    println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
-
     ['start', 'stop'].each { action ->
         def jobName = "${action}-${serverKey}"
         instanceManageJobGenerator(
@@ -33,6 +31,12 @@ serverMatrix.each { serverKey, modulesForServer ->
                 action: action
         )
     }
+}
+
+println("[INFO] Start generating deploy jobs...")
+serverMatrix.each { serverKey, modulesForServer ->
+    def server = servers[serverKey]
+    println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
 
     modulesForServer.each { moduleName ->
         def modulePath = modules[moduleName]
