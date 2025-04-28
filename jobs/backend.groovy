@@ -2,6 +2,7 @@ def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
 def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
 def gradleJobTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
+def instanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
 
 def jobGenerators = [
         api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy')),
@@ -15,10 +16,23 @@ def jobGenerators = [
         efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleJobTemplate)
 ]
 
-println("[INFO] Start generating deploy jobs...")
+println("[INFO] Start generating jenkins jobs...")
+instanceManageJobGenerator.delegate = this
+instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
 serverMatrix.each { serverKey, modulesForServer ->
     def server = servers[serverKey]
     println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
+
+    ['start', 'stop'].each { action ->
+        def jobName = "${action}-${serverKey}"
+        instanceManageJobGenerator(
+                jobName: jobName,
+                description: "Server ${action.capitalize()} Job for ${server.description} (${server.ip})",
+                instanceNo: server.instanceNo,
+                action: action
+        )
+    }
+
     modulesForServer.each { moduleName ->
         def modulePath = modules[moduleName]
         if (!modulePath) {
