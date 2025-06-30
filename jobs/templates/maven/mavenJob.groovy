@@ -1,4 +1,4 @@
-package templates.maven
+package jobs.templates.maven
 
 return { Map config ->
     job(config.jobName) {
@@ -37,7 +37,7 @@ return { Map config ->
                 // Step 1: 서버 상태 확인
                 builders << 'hudson.tasks.Shell' {
                     command("""
-                        SERVER_NAME=${config.serverName}
+                        SERVER_NAME=${config.serverKey}
                         SERVER_INSTANCE_NO=${config.instanceNo}
 
                         echo "========== Server Status Check: \$SERVER_NAME =========="

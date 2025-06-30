@@ -1,4 +1,4 @@
-package templates.gradle
+package jobs.templates.gradle
 
 return { Map config ->
     job(config.jobName) {

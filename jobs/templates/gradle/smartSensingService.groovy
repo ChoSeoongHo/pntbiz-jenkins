@@ -1,4 +1,4 @@
-package templates.gradle
+package jobs.templates.gradle
 
 return { gradleTemplate ->
     return { Map baseConfig ->

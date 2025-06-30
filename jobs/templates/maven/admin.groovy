@@ -1,4 +1,4 @@
-package templates.maven
+package jobs.templates.maven
 
 return { mavenTemplate ->
     return { Map baseConfig ->
