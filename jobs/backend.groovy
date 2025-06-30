@@ -17,25 +17,25 @@ def jobGenerators = [
         efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleTemplate)
 ]
 
-println("[INFO] Start generating instance-management jobs...")
-def totalInstanceJobs = 0
-instanceManageJobGenerator.delegate = this
-instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
-servers.each { serverKey, serverInfo ->
-    def server = servers[serverKey]
-    ['start', 'stop'].each { action ->
-        def jobName = "${action}-${serverKey}"
-        println("[INFO] Start syncing instance job '${jobName}'...")
-        instanceManageJobGenerator(
-                jobName: jobName,
-                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
-                instanceNo: server.instanceNo,
-                action: action
-        )
-        println("[INFO] Instance job '${jobName}' synced successfully.")
-        totalInstanceJobs++
-    }
-}
+//println("[INFO] Start generating instance-management jobs...")
+//def totalInstanceJobs = 0
+//instanceManageJobGenerator.delegate = this
+//instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
+//servers.each { serverKey, serverInfo ->
+//    def server = servers[serverKey]
+//    ['start', 'stop'].each { action ->
+//        def jobName = "${action}-${serverKey}"
+//        println("[INFO] Start syncing instance job '${jobName}'...")
+//        instanceManageJobGenerator(
+//                jobName: jobName,
+//                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
+//                instanceNo: server.instanceNo,
+//                action: action
+//        )
+//        println("[INFO] Instance job '${jobName}' synced successfully.")
+//        totalInstanceJobs++
+//    }
+//}
 println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
 
 println("[INFO] Start generating deploy jobs...")
