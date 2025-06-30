@@ -36,7 +36,7 @@ def jobGenerators = [
 //        totalInstanceJobs++
 //    }
 //}
-println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
+//println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
 
 println("[INFO] Start generating deploy jobs...")
 def totalDeployJobs = 0
@@ -92,5 +92,5 @@ serverMatrix.each { serverKey, modulesForServer ->
 }
 println "[INFO] Deploy jobs sync completed. Total: ${totalDeployJobs} jobs."
 
-def totalJobs = totalInstanceJobs + totalDeployJobs
-println "[INFO] Job sync process finished. Total jobs synced: ${totalJobs}"
+//def totalJobs = totalInstanceJobs + totalDeployJobs
+//println "[INFO] Job sync process finished. Total jobs synced: ${totalJobs}"
