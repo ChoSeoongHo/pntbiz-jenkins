@@ -4,6 +4,14 @@ package config
  * 모듈 정보
  */
 return [
+        sh                   : 'pntbiz-indoorplus-smart-hospital',
+        am                   : 'pntbiz-indoorplus-smart-asset-management',
+        sm                   : 'pntbiz-indoorplus-smart-military',
+        ws                   : 'pntbiz-indoorplus-worker-safety',
+        ps                   : 'pntbiz-indoorplus-patient-safety',
+        ct                   : 'pntbiz-ct-front-end',
+        rms                  : 'pntbiz-indoorplus-smart-rms',
+        irds                 : 'pntbiz-indoorplus-smart-hospital',
         api                  : 'pntbiz-api',
         wms                  : 'pntbiz-wms',
         admin                : 'pntbiz-admin',
