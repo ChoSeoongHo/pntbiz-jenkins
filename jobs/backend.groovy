@@ -57,7 +57,7 @@ serverMatrix.each { serverKey, modulesForServer ->
             return
         }
 
-        def artifactName = moduleName.replace('-', '_') + '-0.0.1-SNAPSHOT.war'
+        def artifactName = 'pntbiz_' + moduleName.replace('-', '_') + '-0.0.1-SNAPSHOT.war'
         def jobName = "${server.suffix}-${moduleName}"
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
 
