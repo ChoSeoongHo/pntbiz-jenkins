@@ -28,4 +28,8 @@ return [
         'dev-23': ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'dev-24': ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'dev-25': ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'demo' : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'demo2' : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'demo3' : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'demo4' : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
 ]

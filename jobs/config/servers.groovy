@@ -39,4 +39,8 @@ return [
         'dev-24'           : [description: "Server-24", instanceNo: '19115409', ip: '175.106.97.9', playbook: '/etc/ansible/server-24/playbook.yml', inventory: '/etc/ansible/server-24/hosts-server-24', suffix: 'server-24'],
         'dev-25'           : [description: "Server-25", instanceNo: '19115433', ip: '175.45.200.15', playbook: '/etc/ansible/server-25/playbook.yml', inventory: '/etc/ansible/server-25/hosts-server-25', suffix: 'server-25'],
         'dev-smart-sensing': [description: "Smart Sensing", instanceNo: '102941732', ip: '211.188.61.215', playbook: '/etc/ansible/dev-smart-sensing/playbook.yml', inventory: '/etc/ansible/dev-smart-sensing/hosts-dev-smart-sensing', suffix: 'dev-smart-sensing'],
+        'demo'             : [description: "demo", instanceNo: '20043698', ip: '223.130.131.173', playbook: '/etc/ansible/demo-mercury/playbook.yml', inventory: '/etc/ansible/demo-mercury/hosts-pnt-demo', suffix: 'demo-mercury'],
+        'demo2'             : [description: "demo2", instanceNo: '20043705', ip: '175.45.202.38', playbook: '/etc/ansible/demo2/playbook.yml', inventory: '/etc/ansible/demo2/hosts-pnt-demo2', suffix: 'demo2'],
+        'demo3'             : [description: "demo3", instanceNo: '20043710', ip: '110.165.17.210', playbook: '/etc/ansible/demo3/playbook.yml', inventory: '/etc/ansible/demo3/hosts-pnt-demo3', suffix: 'demo3'],
+        'demo4'             : [description: "demo4", instanceNo: '20043715', ip: '175.45.203.245', playbook: '/etc/ansible/demo4/playbook.yml', inventory: '/etc/ansible/demo4/hosts-pnt-demo4', suffix: 'demo4'],
 ]
