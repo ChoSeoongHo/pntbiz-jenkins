@@ -9,7 +9,8 @@ return { Map config ->
             stringParam('ENV', config.env ?: 'develop', 'resources-[ENV]/[SITE]')
             stringParam('SITE', config.site ?: 'common', 'resources-[ENV]/[SITE]')
             if (config.withSkipTestParam) {
-                booleanParam('SKIP_TEST', false, '단위 테스트 생략 여부')
+                def skipTestDefault = config.containsKey('runTestBeforeBuild') ? !config.runTestBeforeBuild : true
+                booleanParam('SKIP_TEST', skipTestDefault, '단위 테스트 생략 여부')
             }
         }
 
