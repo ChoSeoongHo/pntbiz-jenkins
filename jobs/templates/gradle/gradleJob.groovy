@@ -48,27 +48,7 @@ return { Map config ->
             configure { project ->
                 def builders = project / 'builders'
 
-                // STEP 1: 서버 상태 확인
-                builders << 'hudson.tasks.Shell' {
-                    command("""
-                        SERVER_NAME=${config.serverKey}
-                        SERVER_INSTANCE_NO=${config.instanceNo}
-
-                        echo "========== Server Status Check: \$SERVER_NAME =========="
-                        serverStatusCheck=\$(ncloud vserver getServerInstanceList | grep "\$SERVER_NAME" -A 15 | grep RUN)
-                        if [ -z "\$serverStatusCheck" ]; then
-                          echo "> Server is not running. Starting the server..."
-                          ncloud vserver startServerInstances --serverInstanceNoList \$SERVER_INSTANCE_NO
-                          echo "> Waiting for the server to be fully up..."
-                          sleep 120
-                        else
-                          echo "> Server is already running."
-                        fi
-                        echo "========== Server Status Check Done =========="
-                    """.stripIndent())
-                }
-
-                // STEP 2: Gradle 빌드
+                // STEP 1: Gradle 빌드
                 builders << 'hudson.plugins.gradle.Gradle' {
                     tasks(config.gradleTasks ?: 'clean build -x test')
                     gradleName(config.gradleName ?: 'gradle-8.10.2')
@@ -78,12 +58,12 @@ return { Map config ->
                     }
                 }
 
-                // STEP 3: 아티팩트 생성 및 압축
+                // STEP 2: 아티팩트 생성 및 압축
                 builders << 'hudson.tasks.Shell' {
                     command(config.packagingScript.stripIndent())
                 }
 
-                // STEP 4: Ansible 배포
+                // STEP 3: Ansible 배포
                 builders << 'org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder' {
                     playbook(config.playbook)
                     ansibleName('ANSIBLE_HOME')
@@ -102,7 +82,7 @@ return { Map config ->
                     }
                 }
 
-                // STEP 5: 정리
+                // STEP 4: 정리
                 builders << 'hudson.tasks.Shell' {
                     command("""
                         echo "----------- Clean-Up Workspace -----------"
