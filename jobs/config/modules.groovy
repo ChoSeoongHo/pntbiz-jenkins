@@ -11,7 +11,7 @@ return [
         ps                   : 'pntbiz-indoorplus-patient-safety',
         ct                   : 'pntbiz-ct-front-end',
         rms                  : 'pntbiz-indoorplus-smart-rms',
-        irds                 : 'pntbiz-indoorplus-smart-hospital',
+        irds                 : 'pntbiz-irds-fe',
         api                  : 'pntbiz-api',
         wms                  : 'pntbiz-wms',
         admin                : 'pntbiz-admin',
@@ -22,6 +22,8 @@ return [
         so_ts                : 'pntbiz-so-ts',
         smart_sensing_core   : 'indoorplus-smart-sensing-core-api',
         smart_sensing_service: 'indoorplus-smart-sensing-service-api',
-        efm                  : 'pntbiz-raas-efm',
-        scanner_management   : 'pntbiz-scanner-manager'
+        efm_api              : 'pntbiz-raas-efm',
+        scanner_management   : 'pntbiz-scanner-manager',
+        rpa_agent            : 'pntbiz-semi-rpa',
+        rpa_manager          : 'pntbiz-semi-rpa',
 ]
