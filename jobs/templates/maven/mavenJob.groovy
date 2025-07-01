@@ -34,27 +34,7 @@ return { Map config ->
             configure { project ->
                 def builders = project / 'builders'
 
-                // Step 1: 서버 상태 확인
-//                builders << 'hudson.tasks.Shell' {
-//                    command("""
-//                        SERVER_NAME=${config.serverKey}
-//                        SERVER_INSTANCE_NO=${config.instanceNo}
-//
-//                        echo "========== Server Status Check: \$SERVER_NAME =========="
-//                        serverStatusCheck=\$(ncloud vserver getServerInstanceList | grep "\$SERVER_NAME" -A 15 | grep RUN)
-//                        if [ -z "\$serverStatusCheck" ]; then
-//                          echo "> Server is not running. Starting the server..."
-//                          ncloud vserver startServerInstances --serverInstanceNoList \$SERVER_INSTANCE_NO
-//                          echo "> Waiting for the server to be fully up..."
-//                          sleep 120
-//                        else
-//                          echo "> Server is already running."
-//                        fi
-//                        echo "========== Server Status Check Done =========="
-//                    """.stripIndent())
-//                }
-
-                // Step 2: Maven Build
+                // Step 1: Maven Build
                 builders << 'hudson.tasks.Maven' {
                     targets(config.mavenGoals ?: "clean install -Dmaven.test.skip=\${SKIP_TEST} -Denvironment=\${ENV} -Dsite=\${SITE}")
                     pom(config.pomPath ?: './pom.xml')
@@ -62,7 +42,7 @@ return { Map config ->
                     usePrivateRepository(false)
                 }
 
-                // Step 3: Ansible 배포
+                // Step 2: Ansible 배포
                 builders << 'org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder' {
                     playbook(config.playbook)
                     ansibleName('ANSIBLE_HOME')
@@ -81,7 +61,7 @@ return { Map config ->
                     }
                 }
 
-                // Step 4: 정리
+                // Step 3: 정리
                 builders << 'hudson.tasks.Shell' {
                     command("""
                         echo "----------- Clean-Up Workspace -----------"

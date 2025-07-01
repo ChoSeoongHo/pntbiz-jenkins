@@ -66,13 +66,16 @@ serverMatrix.each { serverKey, modulesForServer ->
         jobGenerator.delegate = this
         jobGenerator.resolveStrategy = DELEGATE_FIRST
         jobGenerator([
-                serverKey  : serverKey,
-                instanceNo : server.instanceNo,
-                jobName    : jobName,
-                description: desc,
-                playbook   : server.playbook,
-                inventory  : server.inventory,
-                extraVars  : [
+                serverKey    : serverKey,
+                instanceNo   : server.instanceNo,
+                jobName      : jobName,
+                description  : desc,
+                playbook     : server.playbook,
+                inventory    : server.inventory,
+                defaultBranch: server.defaultBranch ?: 'develop',
+                env          : server.env ?: 'develop',
+                site         : server.site ?: 'common',
+                extraVars    : [
                         host          : 'local',
                         src_file_path : "/var/lib/jenkins/workspace/${jobName}/${modulePath}/target/${artifactName}",
                         desc_file_path: "/data/${jobName}/${moduleName}.zip",
@@ -80,7 +83,7 @@ serverMatrix.each { serverKey, modulesForServer ->
                         archive_temp  : "/data/${jobName}/temp/",
                         sh_command    : "/data/naver/shell/deploy_${moduleName}.sh"
                 ],
-                cleanup    : [
+                cleanup      : [
                         workspace   : "/var/lib/jenkins/workspace/${jobName}",
                         deployTarget: "/data/${jobName}"
                 ]
