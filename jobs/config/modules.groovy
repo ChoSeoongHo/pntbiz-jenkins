@@ -14,7 +14,7 @@ return [
         irds                 : 'pntbiz-irds-fe',
         api                  : 'pntbiz-api',
         wms                  : 'pntbiz-wms',
-        admin                : 'pntbiz-admin2',
+        admin2               : 'pntbiz-admin2',
         rtls                 : 'pntibz-rtls',
         socket               : 'pntbiz-socket',
         oauth                : 'pntbiz-oauth',
