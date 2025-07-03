@@ -100,7 +100,8 @@ return { Map config ->
                 startNotification(true)
                 notifySuccess(true)
                 notifyEveryFailure(true)
-                includeFailedTests(true)
+                includeFailedTests(false)
+                commitInfoChoice('NONE')
             }
         }
     }
