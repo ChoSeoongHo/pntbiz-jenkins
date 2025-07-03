@@ -57,11 +57,6 @@ serverMatrix.each { serverKey, modulesForServer ->
             return
         }
 
-        def version = '0.0.1-SNAPSHOT'
-        // SuperAdmin은 프로젝트 경로가 pntbiz_admin2여서 예외 처리
-        def adjustedModuleName = moduleName == 'admin' ? moduleName + '2' : moduleName
-        def artifactName = 'pntbiz_' + adjustedModuleName.replace('-', '_') + '-' + version + '.war'
-
         def jobName = "${server.suffix}-${moduleName}"
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
 
