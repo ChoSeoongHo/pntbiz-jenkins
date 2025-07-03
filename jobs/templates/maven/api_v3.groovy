@@ -7,7 +7,7 @@ return { mavenTemplate ->
 
         mavenTemplate(baseConfig + [
                 repoUrl          : 'git@github.com:pntbiz1/pntbiz-server.git',
-                credentialsId    : 'ssh-pntbiz-indoorplus-api',
+                credentialsId    : 'ssh-pntbiz-server',
                 pomPath          : './pntbiz-root/pom.xml',
                 mavenGoals       : 'clean install -Dmaven.test.skip=${SKIP_TEST} -Denvironment=${ENV} -Dsite=${SITE}',
                 withSkipTestParam: true

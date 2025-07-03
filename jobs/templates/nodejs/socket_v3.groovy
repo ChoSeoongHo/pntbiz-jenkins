@@ -16,7 +16,7 @@ return { Map config ->
             git {
                 remote {
                     url('git@github.com:pntbiz1/pntbiz-server.git')
-                    credentials('ssh-pntbiz-indoorplus-socket')
+                    credentials('ssh-pntbiz-server')
                 }
                 branch('${BRANCH}')
             }
