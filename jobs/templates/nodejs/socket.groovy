@@ -1,4 +1,4 @@
-package templates.nodejs
+package jobs.templates.nodejs
 
 return { Map config ->
     job(config.jobName) {

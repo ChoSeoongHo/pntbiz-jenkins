@@ -45,8 +45,8 @@ serverMatrix.each { serverKey, modulesForServer ->
     println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
 
     modulesForServer.each { moduleName ->
-        def modulePath = modules[moduleName]
-        if (!modulePath) {
+        def moduleMeta = modules[moduleName]
+        if (!moduleMeta) {
             println "[WARN] Module '${moduleName}' is not defined in 'modules' map. Skipping."
             return
         }
@@ -82,7 +82,7 @@ serverMatrix.each { serverKey, modulesForServer ->
                 runTestBeforeBuild: server.runTestBeforeBuild,
                 extraVars         : [
                         host          : 'local',
-                        src_file_path : "/var/lib/jenkins/workspace/${jobName}/${modulePath}/target/${artifactName}",
+                        src_file_path : "/var/lib/jenkins/workspace/${jobName}/${moduleMeta.sourceFilePath}",
                         desc_file_path: "/data/${jobName}/${moduleName}.zip",
                         remote_host   : "server-${moduleName}",
                         archive_temp  : "/data/${jobName}/temp/",
