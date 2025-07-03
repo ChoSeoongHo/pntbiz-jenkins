@@ -14,7 +14,11 @@ def jobGenerators = [
         oauth                : evaluate(readFileFromWorkspace('jobs/templates/gradle/oauth.groovy'))(gradleTemplate),
         smart_sensing_core   : evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingCore.groovy'))(gradleTemplate),
         smart_sensing_service: evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingService.groovy'))(gradleTemplate),
-        efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleTemplate)
+        efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleTemplate),
+        api_v3               : evaluate(readFileFromWorkspace('jobs/templates/maven/api_v3.groovy'))(mavenTemplate),
+        socket_v3            : evaluate(readFileFromWorkspace('jobs/templates/nodejs/socket_v3.groovy')),
+        admin_v3             : evaluate(readFileFromWorkspace('jobs/templates/maven/admin_v3.groovy'))(mavenTemplate),
+        wms_v3               : evaluate(readFileFromWorkspace('jobs/templates/maven/wms_v3.groovy'))(mavenTemplate),
 ]
 
 //println("[INFO] Start generating instance-management jobs...")
