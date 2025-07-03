@@ -28,25 +28,6 @@ return { Map config ->
 
                 builders << 'hudson.tasks.Shell' {
                     command("""
-                        SERVER_NAME=${config.serverKey}
-                        SERVER_INSTANCE_NO=${config.instanceNo}
-
-                        echo "========== Server Status Check: \$SERVER_NAME =========="
-                        serverStatusCheck=\$(ncloud vserver getServerInstanceList | grep "\$SERVER_NAME" -A 15 | grep RUN)
-                        if [ -z "\$serverStatusCheck" ]; then
-                          echo "> Server is not running. Starting the server..."
-                          ncloud vserver startServerInstances --serverInstanceNoList \$SERVER_INSTANCE_NO
-                          echo "> Waiting for the server to be fully up..."
-                          sleep 120
-                        else
-                          echo "> Server is already running."
-                        fi
-                        echo "========== Server Status Check Done =========="
-                    """.stripIndent())
-                }
-
-                builders << 'hudson.tasks.Shell' {
-                    command("""
                         export NVM_DIR="/var/lib/jenkins/.nvm"
                         [ -s "\$NVM_DIR/nvm.sh" ] && \\. "\$NVM_DIR/nvm.sh"
 

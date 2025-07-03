@@ -1,3 +1,5 @@
+package jobs.templates.bash
+
 return { Map config ->
     job(config.jobName) {
         description(config.description)
