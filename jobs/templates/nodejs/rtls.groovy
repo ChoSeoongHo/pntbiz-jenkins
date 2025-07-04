@@ -10,9 +10,9 @@ return { Map config ->
         }
 
         parameters {
-            stringParam('BRANCH', config.defaultBranch ?: 'v12-master', '')
+            stringParam('BRANCH', 'v12-master', '')
             stringParam('VERSION', config.version ?: 'v12.18.3', '')
-            stringParam('ENV', config.env ?: 'site/common', '')
+            stringParam('ENV', 'site/common', '')
             choiceParam('NODE_VERSION', ['v14.19.1', 'v20.18.3', 'v22.14.0'], 'Node 버전 설정')
         }
 
