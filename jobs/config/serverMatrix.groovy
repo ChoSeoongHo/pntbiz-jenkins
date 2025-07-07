@@ -8,6 +8,7 @@ return [
         'demo2'      : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'demo3'      : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'demo4'      : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'dev-so-pm'  : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth', 'so_pm'],
         'dev-01'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth', 'api_v3', 'socket_v3', 'admin_v3', 'wms_v3'],
         'dev-02'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'dev-04'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
