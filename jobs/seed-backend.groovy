@@ -14,7 +14,7 @@ job('seed-job') {
     steps {
         dsl {
             external('jobs/backend.groovy')
-            removeAction('DISABLE')
+            removeAction('IGNORE')
             ignoreExisting(true)
         }
     }
