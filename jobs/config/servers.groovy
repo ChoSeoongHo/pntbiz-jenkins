@@ -45,5 +45,5 @@ return [
         'dev-25'           : [description: "Server-25", instanceNo: '19115433', ip: '175.45.200.152', playbook: '/etc/ansible/server-25/playbook.yml', inventory: '/etc/ansible/server-25/hosts-server-25', suffix: 'server-25', defaultBranch: 'pjt-01-develop', env: 'server', site: '25'],
         'dev-smart-sensing': [description: "Smart Sensing", instanceNo: '102941732', ip: '211.188.61.215', playbook: '/etc/ansible/dev-smart-sensing/playbook.yml', inventory: '/etc/ansible/dev-smart-sensing/hosts-dev-smart-sensing', suffix: 'dev-smart-sensing'],
         'dev-mfhs'         : [description: "MFHS(유연의료 과제)", instanceNo: '19012692', ip: '175.45.200.89', playbook: '/etc/ansible/dev-mfhs/playbook.yml', inventory: '/etc/ansible/dev-mfhs', suffix: 'dev-mfhs'],
-        'dev-semirpa'      : [description: "병원효율화", instanceNo: '19012706', ip: '223.130.128.47', playbook: '/etc/ansible/semirpa/playbook.yml', inventory: '/etc/ansible/dev-semirpa', suffix: 'dev-semirpa']
+        'dev-semi-rpa'     : [description: "병원효율화", instanceNo: '19012706', ip: '223.130.128.47', playbook: '/etc/ansible/dev-semi-rpa/playbook.yml', inventory: '/etc/ansible/dev-semi-rpa', suffix: 'dev-semi-rpa']
 ]

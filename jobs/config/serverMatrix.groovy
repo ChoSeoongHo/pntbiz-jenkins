@@ -33,4 +33,5 @@ return [
         'dev-23'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'dev-24'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
         'dev-25'     : ['api', 'wms', 'admin', 'rtls', 'socket', 'oauth'],
+        'dev-semi-rpa'   : ['api', 'wms', 'admin'],
 ]
