@@ -34,4 +34,9 @@ return [
         'dev-24'     : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-25'     : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-semi-rpa'   : ['api', 'wms', 'admin'],
+        'anam-rtls'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
+        'aws-dev-01'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
+        'aws-dev-02'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
+        'aws-dev-03'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
+        'aws-dev-04'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
 ]

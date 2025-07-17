@@ -45,5 +45,10 @@ return [
         'dev-25'           : [description: "Server-25", instanceNo: '19115433', ip: '175.45.200.152', playbook: '/etc/ansible/server-25/playbook.yml', inventory: '/etc/ansible/server-25/hosts-server-25', suffix: 'server-25', defaultBranch: 'pjt-01-develop', env: 'server', site: '25'],
         'dev-smart-sensing': [description: "Smart Sensing", instanceNo: '102941732', ip: '211.188.61.215', playbook: '/etc/ansible/dev-smart-sensing/playbook.yml', inventory: '/etc/ansible/dev-smart-sensing/hosts-dev-smart-sensing', suffix: 'dev-smart-sensing'],
         'dev-mfhs'         : [description: "MFHS(유연의료 과제)", instanceNo: '19012692', ip: '175.45.200.89', playbook: '/etc/ansible/dev-mfhs/playbook.yml', inventory: '/etc/ansible/dev-mfhs', suffix: 'dev-mfhs'],
-        'dev-semi-rpa'     : [description: "병원효율화", instanceNo: '19012706', ip: '223.130.128.47', playbook: '/etc/ansible/dev-semi-rpa/playbook.yml', inventory: '/etc/ansible/dev-semi-rpa', suffix: 'dev-semi-rpa']
+        'dev-semi-rpa'     : [description: "병원효율화", instanceNo: '19012706', ip: '223.130.128.47', playbook: '/etc/ansible/dev-semi-rpa/playbook.yml', inventory: '/etc/ansible/dev-semi-rpa', suffix: 'dev-semi-rpa'],
+        'anam-rtls'        : [description: "고대안암병원 상용", ip: '223.130.160.97', playbook: '/etc/ansible/pnt-kump-main/playbook.yml', inventory: '/etc/ansible/pnt-kump-main/', suffix: 'anam-rtls'],
+        'aws-dev-01'       : [description: "aws-dev-01", ip: '13.124.35.103', playbook: '/etc/ansible/aws-dev-01/playbook.yml', inventory: '/etc/ansible/aws-dev-01/', suffix: 'aws-dev-01'],
+        'aws-dev-02'       : [description: "aws-dev-02", ip: '13.125.33.143', playbook: '/etc/ansible/aws-dev-02/playbook.yml', inventory: '/etc/ansible/aws-dev-02/', suffix: 'aws-dev-02'],
+        'aws-dev-03'       : [description: "aws-dev-03", ip: '13.125.74.123', playbook: '/etc/ansible/aws-dev-03/playbook.yml', inventory: '/etc/ansible/aws-dev-03/', suffix: 'aws-dev-03'],
+        'aws-dev-04'       : [description: "aws-dev-04", ip: '3.34.117.57', playbook: '/etc/ansible/aws-dev-04/playbook.yml', inventory: '/etc/ansible/aws-dev-04/', suffix: 'aws-dev-04'],
 ]
