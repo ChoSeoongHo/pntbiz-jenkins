@@ -28,9 +28,9 @@ return { gradleTemplate ->
                     cp deploy-conf/conf/dev/* \${DEPLOY_DIR_NAME}/conf
                     
                     echo "----------- Make zip file -----------"
-                    cd "${DEPLOY_DIR_NAME}"
-                    zip -r "${ZIP_NAME}" *
-                    mv "${ZIP_NAME}" ..
+                    cd "\${DEPLOY_DIR_NAME}"
+                    zip -r "\${ZIP_NAME}" *
+                    mv "\${ZIP_NAME}" ..
         """.stripIndent()
         ])
     }
