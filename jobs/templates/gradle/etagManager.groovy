@@ -23,7 +23,7 @@ return { gradleTemplate ->
                     mkdir -p \${DEPLOY_DIR_NAME}/conf
                     
                     echo "----------- cp file -----------"
-                    cp pntbiz-etag-management/build/libs/*.jar \${DEPLOY_DIR_NAME}
+                    cp build/libs/*.jar \${DEPLOY_DIR_NAME}
                     cp deploy-conf/sh/dev/*.sh \${DEPLOY_DIR_NAME}
                     cp deploy-conf/conf/dev/* \${DEPLOY_DIR_NAME}/conf
                     
