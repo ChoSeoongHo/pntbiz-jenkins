@@ -11,6 +11,7 @@ return { gradleTemplate ->
                 gradleTasks    : 'clean build -x test',
                 gradleName     : 'gradle-7.2',
                 jdk            : 'JDK8',
+                defaultBranch  : 'develop',
                 packagingScript: """
                     ZIP_NAME='etag-manager.zip'
                     DEPLOY_FILE_NAME='indoorplus-etag-management.jar'
