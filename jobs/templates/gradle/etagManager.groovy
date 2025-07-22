@@ -13,7 +13,7 @@ return { gradleTemplate ->
                 jdk            : 'JDK8',
                 defaultBranch  : 'develop',
                 packagingScript: """
-                    ZIP_NAME='etag-manager.zip'
+                    ZIP_NAME='etag.zip'
                     DEPLOY_FILE_NAME='indoorplus-etag-management.jar'
                     DEPLOY_DIR_NAME='etag'
                     
@@ -29,8 +29,7 @@ return { gradleTemplate ->
                     
                     echo "----------- Make zip file -----------"
                     cd "\${DEPLOY_DIR_NAME}"
-                    zip -r "\${ZIP_NAME}" *
-                    mv "\${ZIP_NAME}" ..
+                    zip -r "../\${DEPLOY_DIR_NAME}.zip" *
         """.stripIndent()
         ])
     }
