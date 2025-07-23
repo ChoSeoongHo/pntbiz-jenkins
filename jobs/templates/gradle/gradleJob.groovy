@@ -49,10 +49,8 @@ return { Map config ->
                 def builders = project / 'builders'
 
                 config.preScripts?.each { script ->
-                    {
-                        builders << 'hudson.tasks.Shell' {
-                            command(script)
-                        }
+                    builders << 'hudson.tasks.Shell' { ->
+                        command(script)
                     }
                 }
 
@@ -102,10 +100,8 @@ return { Map config ->
                 }
 
                 config.postScripts?.each { script ->
-                    {
-                        builders << 'hudson.tasks.Shell' {
-                            command(script)
-                        }
+                    builders << 'hudson.tasks.Shell' { ->
+                        command(script)
                     }
                 }
             }
