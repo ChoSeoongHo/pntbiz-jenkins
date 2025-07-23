@@ -29,6 +29,8 @@ return { gradleTemplate ->
                 postScripts    : [
                         """
                         echo "----------- Revert Node version to default -----------"
+                        export NVM_DIR="/var/lib/jenkins/.nvm"
+                        [ -s "\\$NVM_DIR/nvm.sh" ] && \\\\. "\\$NVM_DIR/nvm.sh"
                         nvm use default
                         """
                 ],
