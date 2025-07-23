@@ -12,6 +12,21 @@ return { gradleTemplate ->
                 gradleName     : 'gradle-7.2',
                 jdk            : 'JDK8',
                 defaultBranch  : 'develop',
+                preScripts     : [
+                        """
+                        echo "----------- Switch Node Version to v22.14.0 -----------"
+                        export NVM_DIR="/var/lib/jenkins/.nvm"
+                        [ -s "\$NVM_DIR/nvm.sh" ] && \\. "\$NVM_DIR/nvm.sh"
+                        nvm use v22.14.0
+                        node -v
+                        """
+                ],
+                postScripts    : [
+                        """
+                        echo "----------- Revert Node version to default -----------"
+                        nvm use default
+                        """
+                ],
                 packagingScript: """
                     ZIP_NAME='etag.zip'
                     DEPLOY_FILE_NAME='indoorplus-etag-management.jar'

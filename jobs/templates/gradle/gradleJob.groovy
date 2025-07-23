@@ -48,6 +48,14 @@ return { Map config ->
             configure { project ->
                 def builders = project / 'builders'
 
+                config.preScripts?.each { script ->
+                    {
+                        builders << 'hudson.tasks.Shell' {
+                            command(script)
+                        }
+                    }
+                }
+
                 // STEP 1: Gradle 빌드
                 builders << 'hudson.plugins.gradle.Gradle' {
                     tasks(config.gradleTasks ?: 'clean build -x test')
@@ -91,6 +99,14 @@ return { Map config ->
                         rm -rf ${config.cleanup.workspace}/.git
                         rm -rf ${config.cleanup.deployTarget}/*
                     """.stripIndent())
+                }
+
+                config.postScripts?.each { script ->
+                    {
+                        builders << 'hudson.tasks.Shell' {
+                            command(script)
+                        }
+                    }
                 }
             }
         }
