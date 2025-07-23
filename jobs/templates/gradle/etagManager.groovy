@@ -19,6 +19,8 @@ return { gradleTemplate ->
                         [ -s "\$NVM_DIR/nvm.sh" ] && \\. "\$NVM_DIR/nvm.sh"
                         nvm use v22.14.0
                         node -v
+                        echo "----------- Disable CI mode -----------"
+                        export CI=false
                         echo "----------- Build React App -----------"
                         npm --prefix ./src/main/frontend install
                         npm --prefix ./src/main/frontend run build
