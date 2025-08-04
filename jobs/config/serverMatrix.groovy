@@ -36,4 +36,5 @@ return [
         'dev-semi-rpa'   : ['api', 'wms', 'admin'],
         'anam-rtls'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
         'aisa1'      : ['wms', 'rtls', 'socket', 'api'],
+        'dev-mfhs'      : ['wms', 'rtls', 'socket', 'api', 'admin'],
 ]
