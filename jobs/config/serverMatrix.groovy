@@ -33,8 +33,9 @@ return [
         'dev-23'     : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-24'     : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-25'     : ['api', 'wms', 'admin', 'socket', 'oauth'],
-        'dev-semi-rpa'   : ['api', 'wms', 'admin'],
-        'anam-rtls'      : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
+        'dev-semi-rpa': ['api', 'wms', 'admin'],
+        'anam-rtls'  : ['api', 'oauth', 'rtls', 'socket', 'admin', 'wms'],
         'aisa1'      : ['wms', 'rtls', 'socket', 'api'],
-        'dev-mfhs'      : ['wms', 'rtls', 'socket', 'api', 'admin'],
+        'dev-mfhs'   : ['wms', 'rtls', 'socket', 'api', 'admin'],
+        'dev-roadpavement' : ['api', 'rtls', 'socket', 'admin', 'wms'],
 ]

@@ -48,5 +48,6 @@ return [
         'anam-rtls'        : [description: "고대안암병원 상용", ip: '223.130.160.97', playbook: '/etc/ansible/pnt-kump-main/playbook.yml', inventory: '/etc/ansible/pnt-kump-main/', suffix: 'anam-rtls'],
         'aisa1'            : [description: "asia1", ip: '3.39.96.110', playbook: '/etc/ansible/asia1-rtls/playbook.yml', inventory: '/etc/ansible/asia1-rtls/', suffix: 'asia1'],
         'dev-mfhs'         : [description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/', suffix: 'dev-mfhs'],
+        'dev-roadpavement' : [description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/', suffix: 'dev-roadpavement'],
 
 ]
