@@ -4,8 +4,8 @@
     username: "USERNAME"
     password: "PASSWORD"
     tenant_id: "TENANT_ID"
-    server_id: "{{ server_id }}"
-    instance_action: "{{ instance_action }}"
+    server_id: "{{ server_id_param }}"
+    instance_action: "{{ instance_action_param }}"
     token_cache_file: "./token_cache.json"
 
   tasks:
@@ -89,7 +89,7 @@
           {}
           {% endif %}
 
-    - name: Send instance control request to NHN Cloud
+    - name: Send instance {{ instance_action }} request to NHN Cloud
       uri:
         url: "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/{{ tenant_id }}/servers/{{ server_id }}/action"
         method: POST
