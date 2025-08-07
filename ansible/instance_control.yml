@@ -26,13 +26,13 @@
       set_fact:
         cached_token: "{{ cached_token_raw.content | b64decode | from_json }}"
 
-    - name: Check if cached token is still valid (less than 23 hours old)
+    - name: Check if cached token is still valid (less than 2h50m old)
       when: token_cache_stat.stat.exists
       set_fact:
         use_cached_token: >-
           {{
             (cached_token.issued_at is defined) and
-            (ansible_date_time.epoch | int - (cached_token.issued_at | int) < 82800)
+            (ansible_date_time.epoch | int - (cached_token.issued_at | int) < 10200)
           }}
 
     - name: Get new token from NHN Cloud
