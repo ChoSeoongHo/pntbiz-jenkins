@@ -1,0 +1,101 @@
+- name: Control NHN Cloud instances
+  hosts: localhost
+  vars:
+    username: "USERNAME"
+    password: "PASSWORD"
+    tenant_id: "TENANT_ID"
+    server_id: "{{ server_id }}"
+    instance_action: "{{ instance_action }}"
+    token_cache_file: "./token_cache.json"
+
+  tasks:
+
+    - name: Check if token cache exists
+      stat:
+        path: "{{ token_cache_file }}"
+      register: token_cache_stat
+
+    - name: Load cached token
+      when: token_cache_stat.stat.exists
+      slurp:
+        src: "{{ token_cache_file }}"
+      register: cached_token_raw
+
+    - name: Parse cached token JSON
+      when: token_cache_stat.stat.exists
+      set_fact:
+        cached_token: "{{ cached_token_raw.content | b64decode | from_json }}"
+
+    - name: Check if cached token is still valid (less than 23 hours old)
+      when: token_cache_stat.stat.exists
+      set_fact:
+        use_cached_token: >-
+          {{
+            (cached_token.issued_at is defined) and
+            (ansible_date_time.epoch | int - (cached_token.issued_at | int) < 82800)
+          }}
+
+    - name: Get new token from NHN Cloud
+      when: not token_cache_stat.stat.exists or not use_cached_token
+      uri:
+        url: "https://api-identity-infrastructure.nhncloudservice.com/v2.0/tokens"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          auth:
+            passwordCredentials:
+              username: "{{ username }}"
+              password: "{{ password }}"
+            tenantId: "{{ tenant_id }}"
+      register: token_response
+
+    - name: Extract new token and save to cache
+      when: not token_cache_stat.stat.exists or not use_cached_token
+      set_fact:
+        new_token: "{{ token_response.json.access.token.id }}"
+        new_token_issued: "{{ ansible_date_time.epoch | int }}"
+
+    - name: Save new token to cache file
+      when: not token_cache_stat.stat.exists or not use_cached_token
+      copy:
+        dest: "{{ token_cache_file }}"
+        content: >
+          {{
+            {
+              "token": new_token,
+              "issued_at": new_token_issued
+            } | to_nice_json
+          }}
+
+    - name: Use final token (cached or new)
+      set_fact:
+        auth_token: >-
+          {{
+            (new_token | default(cached_token.token))
+          }}
+
+    - name: Define action payload
+      set_fact:
+        payload: >-
+          {% if instance_action == 'start' %}
+          {"os-start": null}
+          {% elif instance_action == 'stop' %}
+          {"os-stop": null}
+          {% elif instance_action == 'reboot' %}
+          {"reboot": {"type": "HARD"}}
+          {% else %}
+          {}
+          {% endif %}
+
+    - name: Send instance control request to NHN Cloud
+      uri:
+        url: "https://kr1-api-instance-infrastructure.nhncloudservice.com/v2/{{ tenant_id }}/servers/{{ server_id }}/action"
+        method: POST
+        headers:
+          X-Auth-Token: "{{ auth_token }}"
+          Content-Type: "application/json"
+        body: "{{ payload }}"
+        body_format: json
+        status_code: 202
