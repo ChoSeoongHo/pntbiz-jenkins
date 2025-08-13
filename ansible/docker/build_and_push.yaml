@@ -1,0 +1,43 @@
+- name: Build and push Docker image to Docker Hub
+  hosts: localhost
+  become: true
+  vars:
+    repo_name: "{{ repo_name }}"
+    image_version: "{{ image_version }}"
+    docker_namespace: "indoorplus"
+    registry_url: "docker.io"
+    image_ref: "{{ docker_namespace }}/{{ repo_name }}"
+    workspace_dir: "{{ jenkins_workspace }}"
+    dockerfile_path: "{{ workspace_dir }}/Dockerfile"
+
+  pre_tasks:
+    - name: Check docker is available
+      command: docker -v
+      register: docker_check
+      changed_when: false
+
+    - name: Assert Dockerfile exists
+      stat:
+        path: "{{ dockerfile_path }}"
+      register: df
+
+    - name: Fail if Dockerfile is missing
+      fail:
+        msg: "Dockerfile not found at {{ dockerfile_path }}"
+      when: not df.stat.exists
+
+  tasks:
+    - name: Build image with tags (latest and {{ image_version }})
+      command:
+        cmd: >
+          docker build
+          -f {{ dockerfile_path }}
+          -t {{ image_ref }}:latest
+          -t {{ image_ref }}:{{ image_version }}
+          .
+        chdir: "{{ workspace_dir }}"
+      environment:
+        DOCKER_BUILDKIT: "1"
+
+    - name: Push all tags of the repository - {{ image_ref }}
+      command: docker push --all-tags {{ image_ref }}
