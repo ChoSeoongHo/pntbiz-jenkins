@@ -4,7 +4,8 @@ def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groo
 def mavenTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
 def gradleTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
 
-def instanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
+def nCloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
+def nhncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/nhnInstanceManageJob.groovy'))
 def jobGenerators = [
         api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenTemplate),
         wms                  : evaluate(readFileFromWorkspace('jobs/templates/maven/wms.groovy'))(mavenTemplate),
@@ -22,26 +23,28 @@ def jobGenerators = [
         wms_v3               : evaluate(readFileFromWorkspace('jobs/templates/maven/wms_v3.groovy'))(mavenTemplate),
 ]
 
-//println("[INFO] Start generating instance-management jobs...")
-//def totalInstanceJobs = 0
-//instanceManageJobGenerator.delegate = this
-//instanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
-//servers.each { serverKey, serverInfo ->
-//    def server = servers[serverKey]
-//    ['start', 'stop'].each { action ->
-//        def jobName = "${action}-${serverKey}"
-//        println("[INFO] Start syncing instance job '${jobName}'...")
-//        instanceManageJobGenerator(
-//                jobName: jobName,
-//                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
-//                instanceNo: server.instanceNo,
-//                action: action
-//        )
-//        println("[INFO] Instance job '${jobName}' synced successfully.")
-//        totalInstanceJobs++
-//    }
-//}
-//println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
+println("[INFO] Start generating instance-management jobs...")
+def totalInstanceJobs = 0
+
+def nhncloudServers = servers.findAll { k, v -> v.cloudType == 'nhncloud' }
+nhncloudInstanceManageJobGenerator.delegate = this
+nhncloudInstanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
+nhncloudServers.each { serverKey, serverInfo ->
+    def server = nhncloudServers[serverKey]
+    ['start', 'stop'].each { action ->
+        def jobName = "nhn-${serverKey}-${action}"
+        println("[INFO] Start syncing instance job '${jobName}'...")
+        nhncloudInstanceManageJobGenerator(
+                jobName: jobName,
+                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
+                instanceNo: server.instanceNo,
+                action: action
+        )
+        println("[INFO] Instance job '${jobName}' synced successfully.")
+        totalInstanceJobs++
+    }
+}
+println "[INFO] Instance-management jobs sync completed. Total: ${totalInstanceJobs} jobs."
 
 println("[INFO] Start generating deploy jobs...")
 def totalDeployJobs = 0
