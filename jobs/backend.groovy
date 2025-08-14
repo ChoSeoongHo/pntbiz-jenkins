@@ -5,7 +5,7 @@ def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groo
 def mavenTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
 def gradleTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
 
-def nCloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/instanceManageJob.groovy'))
+def ncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/ncloudInstanceManageJob.groovy'))
 def nhncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/nhnInstanceManageJob.groovy'))
 def jobGenerators = [
         api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenTemplate),
@@ -38,6 +38,7 @@ def mergeMaps(Map... maps) {
 }
 
 def servers = mergeMaps(ncloud, nhncloud)
+println("[INFO] Total number of servers: ${servers.size()}")
 
 println("[INFO] Start generating instance-management jobs...")
 def totalInstanceJobs = 0
