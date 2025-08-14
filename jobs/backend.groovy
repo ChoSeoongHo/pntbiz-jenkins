@@ -5,7 +5,7 @@ def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groo
 def mavenTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
 def gradleTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
 
-def ncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/ncloudInstanceManageJob.groovy'))
+// def ncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/ncloudInstanceManageJob.groovy'))
 def nhncloudInstanceManageJobGenerator = evaluate(readFileFromWorkspace('jobs/templates/bash/nhnInstanceManageJob.groovy'))
 def jobGenerators = [
         api                  : evaluate(readFileFromWorkspace('jobs/templates/maven/api.groovy'))(mavenTemplate),
@@ -50,7 +50,7 @@ nhncloud.each { serverKey, serverInfo ->
         def jobName = "${serverKey}-${action}"
         println("[INFO] Start syncing instance job '${jobName}'...")
         nhncloudInstanceManageJobGenerator(
-                jobName: serverInfo.jobName,
+                jobName: jobName,
                 description: "${action.capitalize()} ${serverInfo.description} Job\n(IP: ${serverInfo.ip})",
                 instanceNo: serverInfo.instanceNo,
                 action: action
