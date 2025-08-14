@@ -8,6 +8,12 @@ return { Map config ->
             numToKeep(5)
         }
 
+        if (config.action == 'stop') {
+            triggers {
+                cron('10 19 * * *')
+            }
+        }
+
         steps {
             configure { project ->
                 def builders = project / 'builders'
