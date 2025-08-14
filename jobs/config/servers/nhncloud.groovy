@@ -15,5 +15,5 @@ package jobs.config.servers
  * @return 서버별 설정 정보를 담은 Map 객체
  */
 return [
-        'mercury-x-app-01': [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-app-01", instanceNo: '27baef88-1e73-481a-b23f-e8c8007d9253'],
+        'mercury-x-app-01': [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-app-01", instanceNo: '27baef88-1e73-481a-b23f-e8c8007d9253', ip: '133.186.213.163'],
 ]

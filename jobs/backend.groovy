@@ -47,11 +47,11 @@ nhncloudInstanceManageJobGenerator.delegate = this
 nhncloudInstanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
 nhncloud.each { serverKey, serverInfo ->
     ['start', 'stop'].each { action ->
-        def jobName = "nhn-${serverKey}-${serverInfo.action}"
+        def jobName = "${serverKey}-${action}"
         println("[INFO] Start syncing instance job '${jobName}'...")
         nhncloudInstanceManageJobGenerator(
                 jobName: serverInfo.jobName,
-                description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
+                description: "${action.capitalize()} ${serverInfo.description} Job\n(IP: ${serverInfo.ip})",
                 instanceNo: serverInfo.instanceNo,
                 action: action
         )
