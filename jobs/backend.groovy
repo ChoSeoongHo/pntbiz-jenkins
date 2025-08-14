@@ -51,6 +51,7 @@ nhncloud.each { serverKey, serverInfo ->
         println("[INFO] Start syncing instance job '${jobName}'...")
         nhncloudInstanceManageJobGenerator(
                 jobName: jobName,
+                projectType: serverInfo.projectType,
                 description: "${action.capitalize()} ${serverInfo.description} Job\n(IP: ${serverInfo.ip})",
                 instanceNo: serverInfo.instanceNo,
                 action: action
