@@ -1,5 +1,6 @@
 def modules = evaluate(readFileFromWorkspace('jobs/config/modules.groovy'))
-def servers = evaluate(readFileFromWorkspace('jobs/config/servers.groovy'))
+def ncloud = evaluate(readFileFromWorkspace('jobs/config/servers/ncloud.groovy'))
+def nhncloud = evaluate(readFileFromWorkspace('jobs/config/servers/nhncloud.groovy'))
 def serverMatrix = evaluate(readFileFromWorkspace('jobs/config/serverMatrix.groovy'))
 def mavenTemplate = evaluate(readFileFromWorkspace('jobs/templates/maven/mavenJob.groovy'))
 def gradleTemplate = evaluate(readFileFromWorkspace('jobs/templates/gradle/gradleJob.groovy'))
@@ -23,21 +24,34 @@ def jobGenerators = [
         wms_v3               : evaluate(readFileFromWorkspace('jobs/templates/maven/wms_v3.groovy'))(mavenTemplate),
 ]
 
+def mergeMaps(Map... maps) {
+    def out = [:]
+    maps.each { m ->
+        m.each { k, v ->
+            if (out.containsKey(k)) {
+                throw new IllegalStateException("Duplicate key ${k}")
+            }
+            out[k] = v
+        }
+    }
+    out
+}
+
+def servers = mergeMaps(ncloud, nhncloud)
+
 println("[INFO] Start generating instance-management jobs...")
 def totalInstanceJobs = 0
 
-def nhncloudServers = servers.findAll { k, v -> v.cloudType == 'nhncloud' }
 nhncloudInstanceManageJobGenerator.delegate = this
 nhncloudInstanceManageJobGenerator.resolveStrategy = Closure.DELEGATE_FIRST
-nhncloudServers.each { serverKey, serverInfo ->
-    def server = nhncloudServers[serverKey]
+nhncloud.each { serverKey, serverInfo ->
     ['start', 'stop'].each { action ->
-        def jobName = "nhn-${serverKey}-${action}"
+        def jobName = "nhn-${serverKey}-${serverInfo.action}"
         println("[INFO] Start syncing instance job '${jobName}'...")
         nhncloudInstanceManageJobGenerator(
-                jobName: jobName,
+                jobName: serverInfo.jobName,
                 description: "${action.capitalize()} ${server.description} Job\n(IP: ${server.ip})",
-                instanceNo: server.instanceNo,
+                instanceNo: serverInfo.instanceNo,
                 action: action
         )
         println("[INFO] Instance job '${jobName}' synced successfully.")
