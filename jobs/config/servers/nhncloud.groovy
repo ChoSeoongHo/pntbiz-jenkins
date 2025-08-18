@@ -13,8 +13,9 @@ package jobs.config.servers
  * @return 서버별 설정 정보를 담은 Map 객체
  */
 return [
-        'mercury-x-app-01': [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-app-01", instanceNo: '27baef88-1e73-481a-b23f-e8c8007d9253', ip: '133.186.213.163'],
-        'mercury-x-k6-01' : [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-k6-01", instanceNo: 'cd6d25a3-ef8f-4adf-904b-cf6f5435a27d', ip: '133.186.213.97'],
-        'mercury-x-lb-01' : [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-lb-01", instanceNo: '075fd10f-abe8-4fc0-9f73-bea3237b8364', ip: '133.186.213.174'],
-        'mercury-x-mqdb'  : [cloudType: "nhncloud", projectType: "mercuryx", description: "mercury-x-mqdb", instanceNo: '1f4cbcf2-cbde-4444-b468-af9c88c0748b', ip: '133.186.213.101'],
+        'prod-scanner-manage': [cloudType: 'nhncloud', projectType: 'rnd', description: 'Scanner Management', instanceNo: '11be6fd0-8064-44da-b51b-a201ea5cebe2', ip: '133.186.209.181'],
+        'mercury-x-app-01'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-01', instanceNo: '27baef88-1e73-481a-b23f-e8c8007d9253', ip: '133.186.213.163'],
+        'mercury-x-k6-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-k6-01', instanceNo: 'cd6d25a3-ef8f-4adf-904b-cf6f5435a27d', ip: '133.186.213.97'],
+        'mercury-x-lb-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-lb-01', instanceNo: '075fd10f-abe8-4fc0-9f73-bea3237b8364', ip: '133.186.213.174'],
+        'mercury-x-mqdb'     : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-mqdb', instanceNo: '1f4cbcf2-cbde-4444-b468-af9c88c0748b', ip: '133.186.213.101'],
 ]
