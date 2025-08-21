@@ -30,7 +30,7 @@ return { gradleTemplate ->
             cp core-api/src/main/resources/resources-\${ENV}/\${SITE}/configProperties.yml \${DEPLOY_DIR_NAME}/conf
             cp core-api/src/main/resources/resources-\${ENV}/\${SITE}/logback.xml \${DEPLOY_DIR_NAME}/conf
             cp core-api/src/main/resources/application.yml \${DEPLOY_DIR_NAME}/conf
-            cp -Rp core-api/src/main/resources/pem.v1/rsa-public.pem \${DEPLOY_DIR_NAME}/conf/pem.v1
+            cp -Rp core-api/src/main/resources/pem/v1/rsa-public.pem \${DEPLOY_DIR_NAME}/conf/pem.v1
             
             # cp deploy-conf/conf/\${ENV}/* \${DEPLOY_DIR_NAME}/conf
             # cp -R /usr/local/jdk-17.0.12_7 \${DEPLOY_DIR_NAME}
