@@ -14,8 +14,12 @@ package jobs.config.servers
  */
 return [
         'prod-scanner-manage': [cloudType: 'nhncloud', projectType: 'rnd', description: 'Scanner Management', instanceNo: '11be6fd0-8064-44da-b51b-a201ea5cebe2', ip: '133.186.209.181'],
-        'mercury-x-app-01'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-01', instanceNo: '27baef88-1e73-481a-b23f-e8c8007d9253', ip: '133.186.213.163'],
-        'mercury-x-k6-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-k6-01', instanceNo: 'cd6d25a3-ef8f-4adf-904b-cf6f5435a27d', ip: '133.186.213.97'],
-        'mercury-x-lb-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-lb-01', instanceNo: '075fd10f-abe8-4fc0-9f73-bea3237b8364', ip: '133.186.213.174'],
-        'mercury-x-mqdb'     : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-mqdb', instanceNo: '1f4cbcf2-cbde-4444-b468-af9c88c0748b', ip: '133.186.213.101'],
+        'mercury-x-app-01'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-01', instanceNo: '739ec127-4a44-4588-88b4-0683196e689b', ip: '133.186.213.163'],
+        'mercury-x-app-02'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-02', instanceNo: 'c9a95d17-d624-44e3-8340-99c8178340aa', ip: '133.186.213.182'],
+        'mercury-x-k6-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-k6-01', instanceNo: '3a60f84a-b311-4df5-b6a0-a51fe96d6e52', ip: '133.186.213.97'],
+        'mercury-x-lb-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-lb-01', instanceNo: '5e3e4e79-ed2e-4af3-9f16-23df863b89ea', ip: '133.186.213.174'],
+        'mercury-x-lb-02'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-lb-02', instanceNo: '92a6eb73-8394-41b3-8595-d4c190c7e706', ip: '125.6.40.85'],
+        'mercury-x-mqdb-01'  : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-mqdb-01', instanceNo: 'fa3b5b6d-b9e3-42cf-8f6d-bde73f96981d', ip: '125.6.36.25'],
+        'mercury-x-mqdb-02'  : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-mqdb-02', instanceNo: '7ee7ce79-07ed-42de-8598-c9d59179f044', ip: '125.6.36.161'],
+        'mercury-x-mqdb-03'  : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-mqdb-03', instanceNo: '726877e1-4edc-49dc-bb54-50a014493037', ip: '125.6.36.24'],
 ]
