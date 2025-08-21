@@ -28,7 +28,7 @@ return { gradleTemplate ->
             cp core-api/build/libs/*.jar \${DEPLOY_DIR_NAME}
             cp deploy-conf/sh/\${ENV}/\${SITE}/*.sh \${DEPLOY_DIR_NAME}
             cp core-api/src/main/resources/resources-\${ENV}/\${SITE}/configProperties.yml \${DEPLOY_DIR_NAME}/conf
-            cp core-api/src/main/resources/resources-\${ENV}/\${SITE}/logback.xml \${DEPLOY_DIR_NAME}/conf
+            cp core-api/src/main/resources/resources-\${ENV}/\${SITE}/logback*.xml \${DEPLOY_DIR_NAME}/conf
             cp core-api/src/main/resources/application.yml \${DEPLOY_DIR_NAME}/conf
             cp -Rp core-api/src/main/resources/pem/v1/rsa-public.pem \${DEPLOY_DIR_NAME}/conf/pem.v1
             
