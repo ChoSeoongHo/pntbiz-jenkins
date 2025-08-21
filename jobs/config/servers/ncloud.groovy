@@ -46,10 +46,10 @@ return [
         'dev-25'           : [cloudType: "ncloud", description: "Server-25", instanceNo: '19115433', ip: '175.45.200.152', playbook: '/etc/ansible/server-25/playbook.yml', inventory: '/etc/ansible/server-25/hosts-server-25', suffix: 'server-25', defaultBranch: 'pjt-01-develop', env: 'server', site: '25'],
         'dev-smart-sensing': [cloudType: "ncloud", description: "Smart Sensing", instanceNo: '102941732', ip: '211.188.61.215', playbook: '/etc/ansible/dev-smart-sensing/playbook.yml', inventory: '/etc/ansible/dev-smart-sensing/hosts-dev-smart-sensing', suffix: 'dev-smart-sensing'],
         'dev-semi-rpa'     : [cloudType: "ncloud", description: "병원효율화", instanceNo: '19012706', ip: '223.130.128.47', playbook: '/etc/ansible/dev-semi-rpa/playbook.yml', inventory: '/etc/ansible/dev-semi-rpa', suffix: 'dev-semi-rpa'],
-        'anam-rtls'        : [cloudType: "ncloud", description: "고대안암병원 상용", ip: '223.130.160.97', playbook: '/etc/ansible/pnt-kump-main/playbook.yml', inventory: '/etc/ansible/pnt-kump-main/', suffix: 'anam-rtls'],
-        'aisa1'            : [cloudType: "ncloud", description: "asia1", ip: '3.39.96.110', playbook: '/etc/ansible/asia1-rtls/playbook.yml', inventory: '/etc/ansible/asia1-rtls/', suffix: 'asia1'],
-        'dev-mfhs'         : [cloudType: "ncloud", description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/', suffix: 'dev-mfhs'],
-        'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/', suffix: 'dev-roadpavement'],
-        'stage-01' : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/', suffix: 'stage-01', defaultBranch: 'pjt-01-product', 'runTestBeforeBuild': true],
+        'anam-rtls'        : [cloudType: "ncloud", description: "고대안암병원 상용", ip: '223.130.160.97', playbook: '/etc/ansible/pnt-kump-main/playbook.yml', inventory: '/etc/ansible/pnt-kump-main/hosts-pnt-kump-main', suffix: 'anam-rtls'],
+        'aisa1'            : [cloudType: "ncloud", description: "asia1", ip: '3.39.96.110', playbook: '/etc/ansible/asia1-rtls/playbook.yml', inventory: '/etc/ansible/asia1-rtls/hosts-asia1-rtls', suffix: 'asia1'],
+        'dev-mfhs'         : [cloudType: "ncloud", description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/hosts-mfhs', suffix: 'dev-mfhs'],
+        'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/hosts-roadpavement-dev', suffix: 'dev-roadpavement'],
+        'stage-01' : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/hosts-stage-01', suffix: 'stage-01', defaultBranch: 'pjt-01-product', 'runTestBeforeBuild': true],
 
 ]
