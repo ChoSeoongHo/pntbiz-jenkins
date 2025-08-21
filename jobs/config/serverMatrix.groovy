@@ -38,4 +38,5 @@ return [
         'aisa1'      : ['wms', 'rtls', 'socket', 'api'],
         'dev-mfhs'   : ['wms', 'rtls', 'socket', 'api', 'admin'],
         'dev-roadpavement' : ['api', 'rtls', 'socket', 'admin', 'wms'],
+        'stage-01' : ['api', 'wms', 'admin', 'socket', 'oauth'],
 ]

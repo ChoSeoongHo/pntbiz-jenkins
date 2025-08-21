@@ -50,5 +50,6 @@ return [
         'aisa1'            : [cloudType: "ncloud", description: "asia1", ip: '3.39.96.110', playbook: '/etc/ansible/asia1-rtls/playbook.yml', inventory: '/etc/ansible/asia1-rtls/', suffix: 'asia1'],
         'dev-mfhs'         : [cloudType: "ncloud", description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/', suffix: 'dev-mfhs'],
         'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/', suffix: 'dev-roadpavement'],
+        'stage-01' : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/', suffix: 'stage-01', defaultBranch: 'pjt-01-product', 'runTestBeforeBuild': true],
 
 ]
