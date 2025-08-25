@@ -17,7 +17,7 @@ return [
         'dev-07'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-08'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-09'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
-        'dev-10'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
+        'dev-10'          : ['api', 'wms', 'admin', 'socket', 'oauth', 'etag'],
         'dev-11'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-12'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'dev-13'          : ['api', 'wms', 'admin', 'socket', 'oauth'],
