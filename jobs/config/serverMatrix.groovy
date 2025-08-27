@@ -40,5 +40,6 @@ return [
         'dev-roadpavement': ['api', 'rtls', 'socket', 'admin', 'wms'],
         'stage-01'        : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'mercury-x-app-01': ['smart_sensing_core', 'smart_sensing_service', 'wms', 'admin', 'socket', 'oauth'],
-        'mercury-x-app-02': ['smart_sensing_core', 'smart_sensing_service', 'socket']
+        'mercury-x-app-02': ['smart_sensing_core', 'smart_sensing_service', 'socket'],
+        'smartcare'       : ['api', 'wms', 'admin', 'socket', 'oauth', 'rtls']
 ]

@@ -51,5 +51,6 @@ return [
         'dev-mfhs'         : [cloudType: "ncloud", description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/hosts-mfhs', suffix: 'dev-mfhs'],
         'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/hosts-roadpavement-dev', suffix: 'dev-roadpavement'],
         'stage-01' : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/hosts-stage-01', suffix: 'stage-01', defaultBranch: 'pjt-01-develop', 'runTestBeforeBuild': true],
+        'smartcare' : [description: "스마트돌봄 상용", ip: '101.79.11.185', playbook: '/etc/ansible/naver-prod-app/playbook.yml', inventory: '/etc/ansible/naver-prod-app/hosts-naver-prod-app', suffix: 'smartcare', defaultBranch: 'pjt-01-0005', env: 'site', site: 'pjt-01-0005'],
 
 ]
