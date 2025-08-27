@@ -1,0 +1,23 @@
+- name: Deploy Docker-Compose(Pull -> Up)
+  hosts: "{{ remote_host }}"
+  become: true
+  vars:
+    compose_project_dir: "{{ compose_project_dir | default('/home/pntadmin') }}"
+    compose_ref: "{{ compose_project_dir }}/docker-compose.yaml"
+  tasks:
+    - name: Pulling latest images
+      command: |
+        docker compose -f {{ compose_ref }} pull
+      args:
+        chdir: "{{ compose_project_dir }}"
+
+    - name: Restart compose with new images
+      command: |
+        docker compose -f {{ compose_ref }} up -d --force-recreate --remove-orphans
+      args:
+        chdir: "{{ compose_project_dir }}"
+      register: up_result
+      failed_when: up_result.rc != 0
+
+    - name: Prune dangling images
+      command: docker image prune -f --filter "dangling=true"
