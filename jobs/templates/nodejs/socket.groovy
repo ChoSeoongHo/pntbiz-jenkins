@@ -9,7 +9,7 @@ return { Map config ->
             stringParam('VERSION', config.version ?: 'v12', '')
             stringParam('CONFIG', config.config ?: 'dev/common', 'config 하위 폴더 넣기')
             stringParam('SHELL', config.shell ?: 'dev', 'sh 하위 폴더 넣기')
-            choiceParam('NODE_VERSION', ['v14.19.1', 'v20.18.3', 'v22.14.0'], 'Node 버전 설정')
+            choiceParam('NODE_VERSION', ['v14.19.1', 'v20.18.3', 'v22.14.0', 'v22.18.0'], 'Node 버전 설정')
         }
 
         scm {
