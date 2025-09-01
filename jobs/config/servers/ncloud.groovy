@@ -50,9 +50,8 @@ return [
         'aisa1'            : [cloudType: "ncloud", description: "asia1", ip: '3.39.96.110', playbook: '/etc/ansible/asia1-rtls/playbook.yml', inventory: '/etc/ansible/asia1-rtls/hosts-asia1-rtls', suffix: 'asia1'],
         'dev-mfhs'         : [cloudType: "ncloud", description: "mfhs AM (고려대 유연의료 과제)", ip: '175.45.200.89', playbook: '/etc/ansible/mfhs/playbook.yml', inventory: '/etc/ansible/mfhs/hosts-mfhs', suffix: 'dev-mfhs'],
         'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/hosts-roadpavement-dev', suffix: 'dev-roadpavement'],
-        'stage-01' : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/hosts-stage-01', suffix: 'stage-01', defaultBranch: 'pjt-01-develop', 'runTestBeforeBuild': true],
-        'smartcare' : [description: "스마트돌봄 상용", ip: '101.79.11.185', playbook: '/etc/ansible/naver-prod-app/playbook.yml', inventory: '/etc/ansible/naver-prod-app/hosts-naver-prod-app', suffix: 'smartcare', defaultBranch: 'pjt-01-0005', env: 'site', site: 'pjt-01-0005'],
-        'sssyenc' : [description: "KT텔레캅 쌍용건설 상용", ip: '223.130.139.202', playbook: '/etc/ansible/prod-ssyenc/playbook.yml', inventory: '/etc/ansible/prod-ssyenc/hosts-prod-ssyenc', suffix: 'ssyenc', defaultBranch: 'pjt-03-0010', env: 'site', site: 'pjt-03-0010'],
-        'yh' : [description: "용인세브란스 개발서버", ip: '52.78.102.242', playbook: '/etc/ansible/aws-yh/playbook.yml', inventory: '/etc/ansible/aws-yh/hosts-yh', suffix: 'yh', defaultBranch: 'SN_YonginSev'],
-
+        'stage-01'         : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/hosts-stage-01', suffix: 'stage-01', defaultBranch: 'pjt-01-develop', 'runTestBeforeBuild': true],
+        'smartcare'        : [description: "스마트돌봄 상용", ip: '101.79.11.185', playbook: '/etc/ansible/naver-prod-app/playbook.yml', inventory: '/etc/ansible/naver-prod-app/hosts-naver-prod-app', suffix: 'smartcare', defaultBranch: 'pjt-01-0005', env: 'site', site: 'pjt-01-0005'],
+        'sssyenc'          : [description: "KT텔레캅 쌍용건설 상용", ip: '223.130.139.202', playbook: '/etc/ansible/prod-ssyenc/playbook.yml', inventory: '/etc/ansible/prod-ssyenc/hosts-prod-ssyenc', suffix: 'ssyenc', defaultBranch: 'pjt-03-0010', env: 'site', site: 'pjt-03-0010'],
+        'yh'               : [description: "용인세브란스 개발서버", ip: '52.78.102.242', playbook: '/etc/ansible/aws-yh/playbook.yml', inventory: '/etc/ansible/aws-yh/hosts-yh', suffix: 'yh', defaultBranch: 'SN_YonginSev']
 ]
