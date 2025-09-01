@@ -66,6 +66,7 @@ println("[INFO] Start generating deploy jobs...")
 def totalDeployJobs = 0
 serverMatrix.each { serverKey, modulesForServer ->
     def server = servers[serverKey]
+    println "[INFO] server info : ${server}"
     println "[INFO] Processing server '${serverKey}' (${server.description}/${server.ip})"
 
     modulesForServer.each { moduleName ->
