@@ -42,5 +42,6 @@ return [
         'mercury-x-app-01': ['smart_sensing_core', 'smart_sensing_service', 'wms', 'admin', 'socket', 'oauth'],
         'mercury-x-app-02': ['smart_sensing_core', 'smart_sensing_service', 'socket'],
         'smartcare'       : ['api', 'wms', 'admin', 'socket', 'oauth', 'rtls'],
-        'ssyenc'          : ['api', 'wms', 'admin', 'socket', 'rtls']
+        'ssyenc'          : ['api', 'wms', 'admin', 'socket', 'rtls'],
+        'yh'              : ['api_v3', 'socket_v3', 'admin_v3', 'wms_v3', 'rtls', 'ct']
 ]
