@@ -18,6 +18,7 @@ def jobGenerators = [
         smart_sensing_service: evaluate(readFileFromWorkspace('jobs/templates/gradle/smartSensingService.groovy'))(gradleTemplate),
         efm                  : evaluate(readFileFromWorkspace('jobs/templates/gradle/efm.groovy'))(gradleTemplate),
         etag                 : evaluate(readFileFromWorkspace('jobs/templates/gradle/etagManager.groovy'))(gradleTemplate),
+        kdnp                 : evaluate(readFileFromWorkspace('jobs/templates/gradle/kdnp.groovy'))(gradleTemplate),
         api_v3               : evaluate(readFileFromWorkspace('jobs/templates/maven/api_v3.groovy'))(mavenTemplate),
         socket_v3            : evaluate(readFileFromWorkspace('jobs/templates/nodejs/socket_v3.groovy')),
         admin_v3             : evaluate(readFileFromWorkspace('jobs/templates/maven/admin_v3.groovy'))(mavenTemplate),

@@ -27,6 +27,7 @@ return [
         rpa_agent            : [repository: 'pntbiz-semi-rpa', sourceFilePath: 'semi-rpa-agent/semi-rpa-agent.zip'],
         rpa_manager          : [repository: 'pntbiz-semi-rpa', sourceFilePath: 'semi-rpa-manager/semi-rpa-manager.zip'],
         etag                 : [repository: 'pntbiz-etag-management', sourceFilePath: 'etag.zip'],
+        kdnp                 : [repository: 'pntbiz-kdnp-engine', sourceFilePath: 'kdnp.zip'],
         api_v3               : [repository: 'pntbiz-server', sourceFilePath: 'pntbiz-root/pntbiz-api/target/pntbiz_api-0.0.1-SNAPSHOT.war'],
         socket_v3            : [repository: 'pntbiz-server', sourceFilePath: 'socket/socket.zip'],
         admin_v3             : [repository: 'pntbiz-server', sourceFilePath: 'pntbiz-root/pntbiz-admin2/target/pntbiz_admin2-0.0.1-SNAPSHOT.war'],
