@@ -10,6 +10,7 @@ return { gradleTemplate ->
                 credentialsId  : 'pntbiz-kdnp-engine',
                 gradleTasks    : 'clean build -x test',
                 gradleName     : 'gradle-8.10.2',
+                buildFile      : 'kdnp/build.gradle',
                 jdk            : 'JDK17',
                 defaultBranch  : 'develop',
                 packagingScript: """
