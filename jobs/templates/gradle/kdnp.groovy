@@ -14,7 +14,7 @@ return { gradleTemplate ->
                 defaultBranch  : 'develop',
                 packagingScript: """
                     ZIP_NAME='kdnp.zip'
-                    DEPLOY_FILE_NAME='indoorplus-kdnp-engine.jar'
+                    DEPLOY_FILE_NAME='pntbiz-kdnp-engine.jar'
                     DEPLOY_DIR_NAME='kdnp'
                     
                     echo "----------- Make temp directory -----------"
@@ -23,7 +23,7 @@ return { gradleTemplate ->
                     mkdir -p \${DEPLOY_DIR_NAME}/conf
                     
                     echo "----------- cp file -----------"
-                    cp build/libs/*.jar \${DEPLOY_DIR_NAME}
+                    cp kdnp/build/libs/*.jar \${DEPLOY_DIR_NAME}
                     cp deploy-conf/develop/sh/*.sh \${DEPLOY_DIR_NAME}
                     cp deploy-conf/develop/conf/* \${DEPLOY_DIR_NAME}/conf
                     
