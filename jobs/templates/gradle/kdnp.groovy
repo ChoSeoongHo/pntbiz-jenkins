@@ -14,9 +14,8 @@ return { gradleTemplate ->
                 jdk            : 'JDK17',
                 defaultBranch  : 'develop',
                 packagingScript: """
-                    ZIP_NAME='kdnp.zip'
                     DEPLOY_FILE_NAME='pntbiz-kdnp-engine.jar'
-                    DEPLOY_DIR_NAME='kdnp'
+                    DEPLOY_DIR_NAME='kdnp-engine'
                     
                     echo "----------- Make temp directory -----------"
                     mkdir -p \${DEPLOY_DIR_NAME}
@@ -30,7 +29,7 @@ return { gradleTemplate ->
                     
                     echo "----------- Make zip file -----------"
                     cd "\${DEPLOY_DIR_NAME}"
-                    zip -r "../\${DEPLOY_DIR_NAME}.zip" *
+                    zip -r "../kdnp.zip" *
         """.stripIndent()
         ])
     }
