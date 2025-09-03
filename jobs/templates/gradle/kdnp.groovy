@@ -26,6 +26,8 @@ return { gradleTemplate ->
                     cp kdnp/build/libs/*.jar \${DEPLOY_DIR_NAME}
                     cp deploy-conf/develop/sh/*.sh \${DEPLOY_DIR_NAME}
                     cp deploy-conf/develop/conf/* \${DEPLOY_DIR_NAME}/conf
+
+                    cp -R /usr/local/jdk-17.0.12_7 \${DEPLOY_DIR_NAME}
                     
                     echo "----------- Make zip file -----------"
                     cd "\${DEPLOY_DIR_NAME}"
