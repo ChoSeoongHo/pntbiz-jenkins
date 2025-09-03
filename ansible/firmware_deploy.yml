@@ -1,0 +1,60 @@
+- name: Deploy {{ scanner_type }} firmware
+  hosts: "prod-scanner-manage"
+  serial: 1
+  vars:
+    # 입력 변수
+    desc_file_path: "{{ desc_file_path }}"
+    sh_command: "{{ sh_command }}"
+    usb_subdir: "{{ scanner_type }}"
+
+    # 고정/기본 경로 변수
+    temp_dir: "/data/temp"
+    fw_base_dir: "/data/www/rtls_data"
+    fw_parent_dir: "{{ fw_base_dir }}/fw"
+    fw_dir_mode: "0777"
+
+    firmware_zip_name: "{{ desc_file_path | basename }}"
+    remote_zip_path: "{{ temp_dir }}/{{ firmware_zip_name }}"
+    unzip_dest: "{{ fw_parent_dir }}/{{ usb_subdir }}/"
+
+  tasks:
+    - name: Ensure temp dir exists
+      become: yes
+      file:
+        path: "{{ temp_dir }}"
+        state: directory
+        mode: "0777"
+
+    - name: Copy firmware zip to remote
+      become: yes
+      copy:
+        src: "{{ desc_file_path }}"
+        dest: "{{ temp_dir }}/"
+        mode: "0777"
+
+    - name: Ensure unzip destination exists
+      become: yes
+      become_user: pntadmin
+      file:
+        path: "{{ unzip_dest }}"
+        state: directory
+        mode: "{{ fw_dir_mode }}"
+
+    - name: Unzip firmware into '{{ unzip_dest }}'
+      become: yes
+      become_user: pntadmin
+      command: >
+        unzip -o "{{ remote_zip_path }}" -d "{{ unzip_dest }}"
+      args:
+        chdir: "{{ fw_parent_dir }}"
+      register: unzip_result
+      changed_when: "'inflating:' in unzip_result.stdout or 'extracting:' in unzip_result.stdout"
+
+    - name: chmod recursively for {{ fw_base_dir }}
+      become: yes
+      become_user: pntadmin
+      file:
+        path: "{{ fw_base_dir }}"
+        mode: "{{ fw_dir_mode }}"
+        recurse: yes
+        state: directory
