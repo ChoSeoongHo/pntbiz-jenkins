@@ -56,7 +56,7 @@ nhncloud.each { serverKey, serverInfo ->
                 description: "${action.capitalize()} ${serverInfo.description} Job\n(IP: ${serverInfo.ip})",
                 instanceNo: serverInfo.instanceNo,
                 action: action,
-                startAt: serverInto.startAt,
+                startAt: serverInfo.startAt,
                 stopAt: serverInfo.stopAt
         )
         println("[INFO] Instance job '${jobName}' synced successfully.")
