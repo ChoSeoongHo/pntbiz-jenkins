@@ -8,9 +8,15 @@ return { Map config ->
             numToKeep(5)
         }
 
-        if (config.action == 'stop') {
+        if (config.action == 'start' && config.startAt) {
             triggers {
-                cron('10 19 * * *')
+                cron(config.startAt)
+            }
+        }
+
+        if (config.action == 'stop' && config.stopAt) {
+            triggers {
+                cron(config.stopAt)
             }
         }
 

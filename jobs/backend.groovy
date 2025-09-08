@@ -55,7 +55,9 @@ nhncloud.each { serverKey, serverInfo ->
                 projectType: serverInfo.projectType,
                 description: "${action.capitalize()} ${serverInfo.description} Job\n(IP: ${serverInfo.ip})",
                 instanceNo: serverInfo.instanceNo,
-                action: action
+                action: action,
+                startAt: serverInto.startAt,
+                stopAt: serverInfo.stopAt
         )
         println("[INFO] Instance job '${jobName}' synced successfully.")
         totalInstanceJobs++
