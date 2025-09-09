@@ -9,12 +9,14 @@ return { Map config ->
         }
 
         if (config.action == 'start' && config.startAt) {
+            println("[INFO] Adding start trigger to job '${config.jobName}' (cron: ${config.startAt})")
             triggers {
                 cron(config.startAt)
             }
         }
 
         if (config.action == 'stop' && config.stopAt) {
+            println("[INFO] Adding stop trigger to job '${config.jobName}' (cron: ${config.startAt})")
             triggers {
                 cron(config.stopAt)
             }
