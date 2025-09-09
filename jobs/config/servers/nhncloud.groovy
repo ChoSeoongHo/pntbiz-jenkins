@@ -13,7 +13,7 @@ package jobs.config.servers
  * @return 서버별 설정 정보를 담은 Map 객체
  */
 return [
-        'prod-scanner-manage': [cloudType: 'nhncloud', projectType: 'rnd', description: 'Scanner Management', instanceNo: '11be6fd0-8064-44da-b51b-a201ea5cebe2', ip: '133.186.209.181', startAt: '', stopAt: ''],
+        'prod-scanner-manage': [cloudType: 'nhncloud', projectType: 'rnd', description: 'Scanner Management', instanceNo: '11be6fd0-8064-44da-b51b-a201ea5cebe2', ip: '133.186.209.181', startAt: '', stopAt: '10 19 * * *'],
         'mercury-x-app-01'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-01', suffix: 'mercury-x-app-01', defaultBranch: 'develop-mercuryX', playbook: '/etc/ansible/mercury-x-app-01/playbook.yml', inventory: '/etc/ansible/mercury-x-app-01/hosts', instanceNo: '739ec127-4a44-4588-88b4-0683196e689b', ip: '133.186.213.163', startAt: '', stopAt: '10 19 * * *'],
         'mercury-x-app-02'   : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-app-02', suffix: 'mercury-x-app-02', defaultBranch: 'develop-mercuryX', playbook: '/etc/ansible/mercury-x-app-02/playbook.yml', inventory: '/etc/ansible/mercury-x-app-02/hosts', instanceNo: 'c9a95d17-d624-44e3-8340-99c8178340aa', ip: '133.186.213.182', startAt: '', stopAt: '10 19 * * *'],
         'mercury-x-k6-01'    : [cloudType: 'nhncloud', projectType: 'mercuryx', description: 'mercury-x-k6-01', instanceNo: '3a60f84a-b311-4df5-b6a0-a51fe96d6e52', ip: '133.186.213.97', startAt: '', stopAt: '10 19 * * *'],
