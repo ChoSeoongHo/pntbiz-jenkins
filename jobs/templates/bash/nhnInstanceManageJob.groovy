@@ -16,7 +16,7 @@ return { Map config ->
         }
 
         if (config.action == 'stop' && config.stopAt) {
-            println("[INFO] Adding stop trigger to job '${config.jobName}' (cron: ${config.startAt})")
+            println("[INFO] Adding stop trigger to job '${config.jobName}' (cron: ${config.stopAt})")
             triggers {
                 cron(config.stopAt)
             }
