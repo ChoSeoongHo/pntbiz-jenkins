@@ -42,6 +42,8 @@ return [
         'stage-01'         : ['api', 'wms', 'admin', 'socket', 'oauth'],
         'mercury-x-app-01' : ['smart_sensing_core', 'smart_sensing_service', 'wms', 'admin', 'socket', 'oauth'],
         'mercury-x-app-02' : ['smart_sensing_core', 'smart_sensing_service', 'socket'],
+        'mercury-x-app-03' : ['smart_sensing_core', 'smart_sensing_service', 'socket'],
+        'mercury-x-app-04' : ['smart_sensing_core', 'smart_sensing_service', 'socket'],
         'smartcare'        : ['api', 'wms', 'admin', 'socket', 'oauth', 'rtls'],
         'ssyenc'           : ['api', 'wms', 'admin', 'socket', 'rtls'],
         'yh'               : ['api_v3', 'socket_v3', 'admin_v3', 'wms_v3', 'rtls', 'ct']
