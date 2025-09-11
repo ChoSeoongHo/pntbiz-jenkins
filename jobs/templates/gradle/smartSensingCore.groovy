@@ -9,7 +9,7 @@ return { gradleTemplate ->
                 repoUrl        : 'git@github.com:pntbiz1/indoorplus-smart-sensing-core-api.git',
                 credentialsId  : 'indoorplus-smart-sensing-core-api',
                 parameters     : [
-                        [type: 'string', name: 'ENV', defaultValue: baseConfig.env ?: 'dev', description: ''],
+                        [type: 'string', name: 'ENV', defaultValue: 'dev', description: ''],
                         [type: 'string', name: 'SITE', defaultValue: baseConfig.site ?: 'common', description: '']
                 ],
                 gradleTasks    : 'clean build -x test -Pprofile=${ENV} -Psite=${SITE}',
