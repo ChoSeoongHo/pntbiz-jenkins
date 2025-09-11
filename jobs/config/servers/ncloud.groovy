@@ -52,6 +52,8 @@ return [
         'dev-roadpavement' : [cloudType: "ncloud", description: "도로포장IoT-dev_API(v3)", ip: '175.45.203.224', playbook: '/etc/ansible/roadpavement-dev/playbook.yml', inventory: '/etc/ansible/roadpavement-dev/hosts-roadpavement-dev', suffix: 'dev-roadpavement'],
         'stage-01'         : [description: "Mercury stage 서버", ip: '49.50.129.241', playbook: '/etc/ansible/stage-01/playbook.yml', inventory: '/etc/ansible/stage-01/hosts-stage-01', suffix: 'stage-01', defaultBranch: 'pjt-01-develop', 'runTestBeforeBuild': true],
         'smartcare'        : [description: "스마트돌봄 상용", ip: '101.79.11.185', playbook: '/etc/ansible/naver-prod-app/playbook.yml', inventory: '/etc/ansible/naver-prod-app/hosts-naver-prod-app', suffix: 'smartcare', defaultBranch: 'pjt-01-0005', env: 'site', site: 'pjt-01-0005'],
-        'ssyenc'          : [description: "KT텔레캅 쌍용건설 상용", ip: '223.130.139.202', playbook: '/etc/ansible/prod-ssyenc/playbook.yml', inventory: '/etc/ansible/prod-ssyenc/hosts-prod-ssyenc', suffix: 'ssyenc', defaultBranch: 'pjt-03-0010', env: 'site', site: 'pjt-03-0010'],
-        'yh'               : [description: "용인세브란스 개발서버", ip: '52.78.102.242', playbook: '/etc/ansible/aws-yh/playbook.yml', inventory: '/etc/ansible/aws-yh/hosts-yh', suffix: 'yh', defaultBranch: 'SN_YonginSev']
+        'ssyenc'           : [description: "KT텔레캅 쌍용건설 상용", ip: '223.130.139.202', playbook: '/etc/ansible/prod-ssyenc/playbook.yml', inventory: '/etc/ansible/prod-ssyenc/hosts-prod-ssyenc', suffix: 'ssyenc', defaultBranch: 'pjt-03-0010', env: 'site', site: 'pjt-03-0010'],
+        'yh'               : [description: "용인세브란스 개발서버", ip: '52.78.102.242', playbook: '/etc/ansible/aws-yh/playbook.yml', inventory: '/etc/ansible/aws-yh/hosts-yh', suffix: 'yh', defaultBranch: 'SN_YonginSev'],
+        'prod-sejong'      : [description: "세종청사체육관 상용", ip: '223.130.139.161', playbook: '/etc/ansible/prod-sejongsports/playbook.yml', inventory: '/etc/ansible/prod-sejongsports/hosts-prod-sejongsports', suffix: 'prod-sejong', defaultBranch: 'pjt-03-0010']
+
 ]
