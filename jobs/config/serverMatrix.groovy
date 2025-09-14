@@ -48,4 +48,5 @@ return [
         'ssyenc'           : ['api', 'wms', 'admin', 'socket', 'rtls'],
         'yh'               : ['api_v3', 'socket_v3', 'admin_v3', 'wms_v3', 'rtls', 'ct'],
         'prod-sejong'      : ['api', 'wms', 'admin', 'socket', 'rtls'],
+        'dev-yh'           : ['api_v3', 'admin_v3', 'wms_v3', 'socket_v3', 'rtls', 'ct'],
 ]
