@@ -50,8 +50,7 @@ return { Map config ->
                         cp pntbiz-root/pntbiz-socket/sh/\${SHELL}/*.sh \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.js \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.json \${DEPLOY_DIR_NAME}
-                        [ -d pntbiz-root/pntbiz-socket/service-product ] && cp -R pntbiz-root/pntbiz-socket/service-product \${DEPLOY_DIR_NAME}
-                        [ -d pntbiz-root/pntbiz-socket/service-product ] && cp -R pntbiz-root/pntbiz-socket/modules \${DEPLOY_DIR_NAME}                        
+                        [ -d pntbiz-root/pntbiz-socket/modules ] && cp -R pntbiz-root/pntbiz-socket/modules/ \${DEPLOY_DIR_NAME}/modules                     
 
                         echo "----------- Make zip file -----------"
                         cd \${DEPLOY_DIR_NAME}
