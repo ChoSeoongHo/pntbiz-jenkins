@@ -45,19 +45,11 @@ return { Map config ->
                         cp README.md \${DEPLOY_DIR_NAME}
                         
                         echo "----------- cp file -----------"
-                        if [[ "\$REPOSITORY" == "pntbiz-server.git" ]];then
                         cp -R pntbiz-root/pntbiz-socket/config/\${CONFIG}/* \${DEPLOY_DIR_NAME}/config/\${CONFIG}
                         cp pntbiz-root/pntbiz-socket/config/config.js \${DEPLOY_DIR_NAME}/config/
                         cp pntbiz-root/pntbiz-socket/sh/\${SHELL}/*.sh \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.js \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.json \${DEPLOY_DIR_NAME}
-                        else
-                        cp -R pntbiz-socket/config/\${CONFIG}/* \${DEPLOY_DIR_NAME}/config/\${CONFIG}
-                        cp pntbiz-socket/config/config.js \${DEPLOY_DIR_NAME}/config/
-                        cp pntbiz-socket/sh/\${SHELL}/*.sh \${DEPLOY_DIR_NAME}
-                        cp pntbiz-socket/*.js \${DEPLOY_DIR_NAME}
-                        cp pntbiz-socket/*.json \${DEPLOY_DIR_NAME}
-                        fi
                         
                         echo "----------- Make zip file -----------"
                         cd \${DEPLOY_DIR_NAME}
