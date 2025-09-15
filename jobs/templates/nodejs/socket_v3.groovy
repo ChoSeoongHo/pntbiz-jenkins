@@ -8,7 +8,7 @@ return { Map config ->
             stringParam('REPOSITORY', 'pntbiz-server.git', '')
             stringParam('BRANCH', config.defaultBranch ?: 'pjt-01-develop', '브랜치 : [브랜치명]\n태그 :  refs/tags/[태그번호]')
             stringParam('VERSION', config.version ?: 'v12', '')
-            stringParam('CONFIG', config.config ?: 'dev/common', 'config 하위 폴더 넣기')
+            stringParam('CONFIG', config.config ?: 'development/common', 'config 하위 폴더 넣기')
             stringParam('SHELL', config.shell ?: 'dev', 'sh 하위 폴더 넣기')
             choiceParam('NODE_VERSION', ['v14.19.1', 'v20.18.3', 'v22.14.0'], 'Node 버전 설정')
         }
@@ -50,7 +50,9 @@ return { Map config ->
                         cp pntbiz-root/pntbiz-socket/sh/\${SHELL}/*.sh \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.js \${DEPLOY_DIR_NAME}
                         cp pntbiz-root/pntbiz-socket/*.json \${DEPLOY_DIR_NAME}
-                        
+                        [ -d pntbiz-root/pntbiz-socket/service-product ] && cp -R pntbiz-root/pntbiz-socket/service-product \${DEPLOY_DIR_NAME}
+                        [ -d pntbiz-root/pntbiz-socket/service-product ] && cp -R pntbiz-root/pntbiz-socket/modules \${DEPLOY_DIR_NAME}                        
+
                         echo "----------- Make zip file -----------"
                         cd \${DEPLOY_DIR_NAME}
                         /usr/local/bin/npm cache clean --force
