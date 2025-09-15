@@ -86,6 +86,7 @@ serverMatrix.each { serverKey, modulesForServer ->
 
         def jobName = "${server.suffix}-${moduleName}"
         def desc = "${server.description} ${moduleName.toUpperCase()} \nIP : ${server.ip}"
+        def shellPath = (server.cloudType == 'nhncloud') ? 'nhn' : 'naver'
 
         println "[INFO] Start syncing deploy job '${jobName}'..."
 
@@ -108,7 +109,7 @@ serverMatrix.each { serverKey, modulesForServer ->
                         desc_file_path: "/data/${jobName}/${moduleName}.zip",
                         remote_host   : "server-${moduleName}",
                         archive_temp  : "/data/${jobName}/temp/",
-                        sh_command    : "/data/naver/shell/deploy_${moduleName}.sh"
+                        sh_command    : "/data/${shellPath}/shell/deploy_${moduleName}.sh"
                 ],
                 cleanup           : [
                         workspace   : "/var/lib/jenkins/workspace/${jobName}",
