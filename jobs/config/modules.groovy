@@ -17,7 +17,7 @@ return [
         admin                : [repository: 'pntbiz-admin2', sourceFilePath: 'pntbiz-admin2/target/pntbiz_admin2-0.0.1-SNAPSHOT.war'],
         rtls                 : [repository: 'pntibz-rtls', sourceFilePath: 'rtls.zip'],
         socket               : [repository: 'pntbiz-socket', sourceFilePath: 'socket/socket.zip'],
-        oauth                : [repository: 'pntbiz-oauth', sourceFilePath: 'oauth.zip'],
+        oauth                : [repository: 'pntbiz-oauth', sourceFilePath: 'oauth/oauth.zip'],
         so_pm                : [repository: 'pntbiz-so-pm', sourceFilePath: 'so-pm/so-pm.zip'],
         so_ts                : [repository: 'pntbiz-so-ts', sourceFilePath: 'so-ts/so-ts.zip'],
         smart_sensing_core   : [repository: 'indoorplus-smart-sensing-core-api', sourceFilePath: 'pntbiz_core_api/pntbiz_core_api.zip'],
