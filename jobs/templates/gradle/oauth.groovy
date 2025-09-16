@@ -30,7 +30,6 @@ return { gradleTemplate ->
                     cp deploy-conf/sh/dev/*.sh \${DEPLOY_DIR_NAME}
                     cp deploy-conf/conf/dev/* \${DEPLOY_DIR_NAME}/conf
                     cp deploy-conf/pem/dev/\${PEM_VERSION}/* \${DEPLOY_DIR_NAME}/pem/\${PEM_VERSION}
-                    cp /data/codedeploy-conf/oauth/*.yml \${DEPLOY_DIR_NAME}
                     
                     echo "----------- Make zip file -----------"
                     cd \${DEPLOY_DIR_NAME}
