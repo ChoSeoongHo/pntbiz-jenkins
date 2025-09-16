@@ -4,6 +4,7 @@ return { gradleTemplate ->
     return { Map baseConfig ->
         gradleTemplate.delegate = delegate
         gradleTemplate.resolveStrategy = DELEGATE_FIRST
+        baseConfig.defaultBranch = 'master';
 
         gradleTemplate(baseConfig + [
                 repoUrl        : 'git@github.com:pntbiz1/pntbiz-indoorplus-oauth.git',
